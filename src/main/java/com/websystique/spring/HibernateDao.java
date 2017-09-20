@@ -39,6 +39,22 @@ public static void crearPersonaje(Personaje pj){
     context.close();
 }
 
+public static Jugador obtenerPersonajePorNombre(String name){
+    AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+    JugadorService service = (JugadorService) context.getBean("jugadorService");
+    Jugador j = service.findByName(name);
+    context.close();
+    return j;
+}
+
+public static Jugador obtenerPersonajePorUsuario(String user){
+    AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+    JugadorService service = (JugadorService) context.getBean("jugadorService");
+    Jugador j = service.findByUser(user);
+    context.close();
+    return j;
+}
+
 public static void crearJugador(Jugador py){
     AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
     JugadorService service = (JugadorService) context.getBean("jugadorService");
@@ -86,6 +102,7 @@ public static void darBonoExp(BonoExp be){
     }
     context.close();
 }
+
 
 
 public static void crearIdioma(Idioma i){
@@ -139,6 +156,5 @@ public static List<Hab_secundaria> todosLasHabilidadesSecundarias(){
     context.close();
     return hss;
 }
-    
     
 }

@@ -11,28 +11,36 @@ import com.websystique.spring.model.Jugador;
 
 @Service("jugadorService")
 @Transactional
-public class JugadorServiceImpl implements JugadorService{
+public class JugadorServiceImpl implements JugadorService {
 
-	@Autowired
-	private JugadorDao dao;
-	
-	public void saveJugador(Jugador jugador) {
-		dao.saveJugador(jugador);
-	}
+    @Autowired
+    private JugadorDao dao;
 
-	public List<Jugador> findAllJugadors() {
-		return dao.findAllJugadors();
-	}
+    public void saveJugador(Jugador jugador) {
+        dao.saveJugador(jugador);
+    }
 
-	public void deleteJugadorById(long id) {
-		dao.deleteJugadorById(id);
-	}
+    public List<Jugador> findAllJugadors() {
+        return dao.findAllJugadors();
+    }
 
-	public Jugador findById(long id) {
-		return dao.findById(id);
-	}
+    public void deleteJugadorById(long id) {
+        dao.deleteJugadorById(id);
+    }
 
-	public void updateJugador(Jugador jugador){
-		dao.updateJugador(jugador);
-	}
+    public Jugador findById(long id) {
+        return dao.findById(id);
+    }
+
+    public void updateJugador(Jugador jugador) {
+        dao.updateJugador(jugador);
+    }
+
+    public Jugador findByName(String name) {
+        return dao.findByName(name);
+    }
+
+    public Jugador findByUser(String user) {
+        return dao.findByName(user);
+    }
 }

@@ -48,13 +48,26 @@ public class Creador {
         
         //creacion de personajes
         crearNeo();
+        crearAdminMaster();
+                
         
+    }
+    
+    public static void crearAdminMaster(){
         
+        Jugador master = new Jugador();
+        master.setNombre("Master");
+        master.setPerfil(Jugador.PERFIL_ADMIN);        
+        master.setNombre_usuario("master");
+        master.setPassword("gato");
+        master.setCumple(new Date(1986, 02, 28));        
+        
+        HibernateDao.crearJugador(master);
     }
     
     public static void crearNeo(){
     
-        Jugador hector = new Jugador();
+        Jugador hector = new Jugador();        
         Personaje neo = new Personaje();
         Caracteristicas c = new Caracteristicas();
         Habilidades habilidades = new Habilidades();
@@ -69,9 +82,10 @@ public class Creador {
         Resistencias r = new Resistencias();
         
         hector.setNombre("Hector");
+        hector.setPerfil(Jugador.PERFIL_JUGADOR);        
         hector.setNombre_usuario("capitanneo");
         hector.setPassword("porfilip");
-        hector.setCumple(new Date(1985, 11, 5));
+        hector.setCumple(new Date(1985, 11, 5));       
         
         
         c.setFue(100);

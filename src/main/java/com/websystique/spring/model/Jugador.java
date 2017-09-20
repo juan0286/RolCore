@@ -5,6 +5,7 @@
  */
 package com.websystique.spring.model;
 
+import com.websystique.spring.model.Personaje;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.CascadeType;
@@ -28,6 +29,9 @@ public class Jugador  implements Serializable{
     private long id_jugador;
     
     @Column(nullable = false)
+    private int perfil;
+    
+    @Column(nullable = false)
     private String nombre;
     
     @Column(nullable = false)
@@ -45,8 +49,18 @@ public class Jugador  implements Serializable{
 
     public Jugador() {
     }
-
     
+    public static final int PERFIL_ADMIN = 0;
+    public static final int PERFIL_JUGADOR = 1;
+    public static final int PERFIL_MODERADOR = 2;    
+    
+    public int getPerfil() {
+        return perfil;
+    }
+
+    public void setPerfil(int perfil) {
+        this.perfil = perfil;
+    }    
     
     
     public long getId_jugador() {

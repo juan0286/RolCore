@@ -35,7 +35,7 @@ public class AppMain {
         PersonajeService ps = (PersonajeService) context.getBean("personajeService");
         
         
-        //Creador.crearElRol();
+        Creador.crearElRol();
         
 
         // probar si se guardo correctamente

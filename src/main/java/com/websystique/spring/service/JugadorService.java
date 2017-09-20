@@ -14,5 +14,9 @@ public interface JugadorService {
 
 	Jugador findById(long id);
 
+        Jugador findByName(String name);
+	
+        Jugador findByUser(String user);   
+        
 	void updateJugador(Jugador jugador);
 }

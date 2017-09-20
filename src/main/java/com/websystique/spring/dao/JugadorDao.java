@@ -1,8 +1,9 @@
 package com.websystique.spring.dao;
 
+import com.websystique.spring.model.Jugador;
 import java.util.List;
 
-import com.websystique.spring.model.Jugador;
+
 
 public interface JugadorDao {
 
@@ -13,6 +14,10 @@ public interface JugadorDao {
 	void deleteJugadorById(long id);
 	
 	Jugador findById(long id);
+        
+	Jugador findByName(String name);
+        
+	Jugador findByUser(String user);
 	
 	void updateJugador(Jugador jugador);
 }

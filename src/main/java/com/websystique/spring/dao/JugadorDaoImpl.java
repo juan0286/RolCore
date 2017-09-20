@@ -10,33 +10,44 @@ import org.springframework.stereotype.Repository;
 import com.websystique.spring.model.Jugador;
 
 @Repository("jugadorDao")
-public class JugadorDaoImpl extends AbstractDao implements JugadorDao{
+public class JugadorDaoImpl extends AbstractDao implements JugadorDao {
 
-	public void saveJugador(Jugador jugador) {
-		persist(jugador);
-	}
+    public void saveJugador(Jugador jugador) {
+        persist(jugador);
+    }
 
-	@SuppressWarnings("unchecked")
-	public List<Jugador> findAllJugadors() {
-		Criteria criteria = getSession().createCriteria(Jugador.class);
-		return (List<Jugador>) criteria.list();
-	}
+    @SuppressWarnings("unchecked")
+    public List<Jugador> findAllJugadors() {
+        Criteria criteria = getSession().createCriteria(Jugador.class);
+        return (List<Jugador>) criteria.list();
+    }
 
-	public void deleteJugadorById(long id) {
-		Query query = getSession().createSQLQuery("delete from Jugador where id_jugador = :id");
-		query.setLong("id_jugador", id);
-		query.executeUpdate();
-	}
+    public void deleteJugadorById(long id) {
+        Query query = getSession().createSQLQuery("delete from Jugador where id_jugador = :id");
+        query.setLong("id_jugador", id);
+        query.executeUpdate();
+    }
 
-	
-	public Jugador findById(long id){
-		Criteria criteria = getSession().createCriteria(Jugador.class);
-		criteria.add(Restrictions.eq("id_jugador",id));
-		return (Jugador) criteria.uniqueResult();
-	}
-	
-	public void updateJugador(Jugador jugador){
-		getSession().update(jugador);
-	}
-	
+    public Jugador findById(long id) {
+        Criteria criteria = getSession().createCriteria(Jugador.class);
+        criteria.add(Restrictions.eq("id_jugador", id));
+        return (Jugador) criteria.uniqueResult();
+    }
+
+    public void updateJugador(Jugador jugador) {
+        getSession().update(jugador);
+    }
+
+    public Jugador findByUser(String name) {
+        Criteria criteria = getSession().createCriteria(Jugador.class);
+        criteria.add(Restrictions.eq("nombre_usuario", name));
+        return (Jugador) criteria.uniqueResult();
+    }
+
+    public Jugador findByName(String name) {
+        Criteria criteria = getSession().createCriteria(Jugador.class);
+        criteria.add(Restrictions.eq("nombre", name));
+        return (Jugador) criteria.uniqueResult();
+    }
+
 }
