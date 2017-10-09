@@ -1,6 +1,6 @@
 package com.websystique.spring.service;
 
-import java.util.List;
+import java.util.Set;
 
 import com.websystique.spring.model.Jugador;
 
@@ -8,7 +8,7 @@ public interface JugadorService {
 
 	void saveJugador(Jugador jugador);
 
-	List<Jugador> findAllJugadors();
+	Set<Jugador> findAllJugadors();
 
 	void deleteJugadorById(long id);
 

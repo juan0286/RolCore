@@ -7,7 +7,7 @@ package com.websystique.spring.service;
 
 import com.websystique.spring.configuration.AppConfig;
 import com.websystique.spring.model.TipoObjeto;
-import java.util.List;
+import java.util.Set;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -63,6 +63,7 @@ public class TipoObjetoServiceImplTest {
         TipoObjeto to2 = t_obj_service.findByNombre(to.getNombre());
         assertEquals(to, to2);
          t_obj_service.deleteTipoObjetoByNombre(to.getNombre());
+         t_obj_service.deleteTipoObjetoByNombre(to2.getNombre());
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
     }
@@ -85,7 +86,7 @@ public class TipoObjetoServiceImplTest {
         to.setTam_stnd(99);
         t_obj_service.saveTipoObjeto(to);
         
-        List<TipoObjeto> res = t_obj_service.findAllTipoObjetos();
+        Set<TipoObjeto> res = t_obj_service.findAllTipoObjetos();
         
         assertNotNull(res);
         assertNotEquals(0, res.size());

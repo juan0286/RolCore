@@ -1,6 +1,6 @@
 package com.websystique.spring.dao;
 
-import java.util.List;
+import java.util.Set;
 
 import org.hibernate.Criteria;
 import org.hibernate.Query;
@@ -8,6 +8,8 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import com.websystique.spring.model.Personaje;
+import com.websystique.spring.model.caractPj.Hab_secundaria;
+import java.util.HashSet;
 
 @Repository("personajeDao")
 public class PersonajeDaoImpl extends AbstractDao implements PersonajeDao{
@@ -17,9 +19,9 @@ public class PersonajeDaoImpl extends AbstractDao implements PersonajeDao{
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Personaje> findAllPersonajes() {
+	public Set<Personaje> findAllPersonajes() {
 		Criteria criteria = getSession().createCriteria(Personaje.class);
-		return (List<Personaje>) criteria.list();
+		return  new HashSet<Personaje>(criteria.list());
 	}
 
 	public void deletePersonajeById(long id) {

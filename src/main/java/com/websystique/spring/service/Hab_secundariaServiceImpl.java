@@ -1,6 +1,6 @@
 package com.websystique.spring.service;
 
-import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +20,7 @@ public class Hab_secundariaServiceImpl implements Hab_secundariaService{
 		dao.saveHab_secundaria(hab_secundaria);
 	}
 
-	public List<Hab_secundaria> findAllHab_secundarias() {
+	public Set<Hab_secundaria> findAllHab_secundarias() {
 		return dao.findAllHab_secundarias();
 	}
 

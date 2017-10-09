@@ -11,7 +11,7 @@ import com.websystique.spring.model.TipoObjeto;
 import com.websystique.spring.service.ObjetoService;
 import com.websystique.spring.service.TipoObjetoService;
 import java.math.BigDecimal;
-import java.util.List;
+import java.util.Set;
 import org.joda.time.LocalDate;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -28,7 +28,10 @@ import org.springframework.context.support.AbstractApplicationContext;
  */
 public class ObjetoDaoTest {
 
-    public ObjetoDaoTest() {
+    ObjetoService service;
+    TipoObjetoService t_obj_service;
+
+    public ObjetoDaoTest() {        
     }
 
     @BeforeClass
@@ -52,28 +55,27 @@ public class ObjetoDaoTest {
      */
     @Test
     public void testSaveObjeto() {
+        tenerObjetos();
         System.out.println("saveObjeto");
-        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         
-        ObjetoService service = (ObjetoService) context.getBean("objetoService");
-        service.deleteObjetoByNombre("Objeto de Prueba");
+        String nombre = "Objeto de Prueba save";
+
+        service.deleteObjetoByNombre(nombre);
         Objeto objeto = new Objeto();
         objeto.setDegradado_actual(1500);
-        objeto.setNombre("Objeto de Prueba");
+        objeto.setNombre(nombre);
         
-        TipoObjetoService t_obj_service = (TipoObjetoService) context.getBean("tipoObjetoService");
-        List<TipoObjeto> tobjs = t_obj_service.findAllTipoObjetos();
-        TipoObjeto to = tobjs.get(0);
+        Set<TipoObjeto> tobjs = t_obj_service.findAllTipoObjetos();
+        TipoObjeto to = tobjs.iterator().next();
         objeto.setTipo(to);
-        
-        ObjetoDao instance = new ObjetoDaoImpl();
+
         
         service.saveObjeto(objeto);
 
-        Objeto res = service.findByNombre("Objeto de Prueba");
+        Objeto res = service.findByNombre(nombre);
         assertNotNull(res);
         assertEquals(objeto, res);
-        service.deleteObjetoByNombre("Objeto de Prueba");
+        service.deleteObjetoByNombre(nombre);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
     }
@@ -83,23 +85,15 @@ public class ObjetoDaoTest {
      */
     @Test
     public void testFindAllObjetos() {
+        tenerObjetos();
         System.out.println("findAllObjetos");
         AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         ObjetoService service = (ObjetoService) context.getBean("objetoService");
-        service.deleteObjetoByNombre("Objeto de Prueba");
-        Objeto objeto = new Objeto();
-        objeto.setDegradado_actual(1500);
-        objeto.setNombre("Objeto de Prueba");
         
-        TipoObjetoService t_obj_service = (TipoObjetoService) context.getBean("tipoObjetoService");
-        List<TipoObjeto> tobjs = t_obj_service.findAllTipoObjetos();
-        TipoObjeto to = tobjs.get(0);
-        objeto.setTipo(to);
-        
-        ObjetoDao instance = new ObjetoDaoImpl();
-        service.saveObjeto(objeto);
+        Set<TipoObjeto> tobjs = t_obj_service.findAllTipoObjetos();
+        TipoObjeto to = tobjs.iterator().next();
 
-        List<Objeto> res = service.findAllObjetos();
+        Set<Objeto> res = service.findAllObjetos();
         assertNotNull(res);
         assertNotEquals(0, res.size());
         service.deleteObjetoByNombre("Objeto de Prueba");
@@ -112,20 +106,21 @@ public class ObjetoDaoTest {
      */
     @Test
     public void testDeleteObjetoByNombre() {
+        tenerObjetos();
         System.out.println("deleteObjetoByNombre");
         AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         ObjetoService service = (ObjetoService) context.getBean("objetoService");
         service.deleteObjetoByNombre("Objeto de Prueba");
-        
+
         Objeto objeto = new Objeto();
         objeto.setDegradado_actual(1500);
         objeto.setNombre("Objeto de Prueba");
-        
+
         TipoObjetoService t_obj_service = (TipoObjetoService) context.getBean("tipoObjetoService");
-        List<TipoObjeto> tobjs = t_obj_service.findAllTipoObjetos();
-        TipoObjeto to = tobjs.get(0);
+        Set<TipoObjeto> tobjs = t_obj_service.findAllTipoObjetos();
+        TipoObjeto to = tobjs.iterator().next();
         objeto.setTipo(to);
-        
+
         ObjetoDao instance = new ObjetoDaoImpl();
         service.saveObjeto(objeto);
 
@@ -148,6 +143,7 @@ public class ObjetoDaoTest {
      */
     @Test
     public void testFindByNombre() {
+        tenerObjetos();
         System.out.println("findByNombre");
         AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         ObjetoService service = (ObjetoService) context.getBean("objetoService");
@@ -155,15 +151,15 @@ public class ObjetoDaoTest {
         Objeto objeto = new Objeto();
         objeto.setDegradado_actual(1500);
         objeto.setNombre("Objeto de Prueba");
-                
+
         TipoObjetoService t_obj_service = (TipoObjetoService) context.getBean("tipoObjetoService");
-        List<TipoObjeto> tobjs = t_obj_service.findAllTipoObjetos();
-        TipoObjeto to = tobjs.get(0);
+        Set<TipoObjeto> tobjs = t_obj_service.findAllTipoObjetos();
+        TipoObjeto to = tobjs.iterator().next();
         objeto.setTipo(to);
-        
+
         ObjetoDao instance = new ObjetoDaoImpl();
         service.saveObjeto(objeto);
-        
+
         Objeto res = service.findByNombre("Objeto de Prueba");
         assertNotNull(res);
         assertEquals(objeto, res);
@@ -177,6 +173,7 @@ public class ObjetoDaoTest {
      */
     @Test
     public void testUpdateObjeto() {
+        tenerObjetos();
         System.out.println("updateObjeto");
         AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         ObjetoService service = (ObjetoService) context.getBean("objetoService");
@@ -184,12 +181,12 @@ public class ObjetoDaoTest {
         Objeto objeto = new Objeto();
         objeto.setDegradado_actual(1500);
         objeto.setNombre("Objeto de Prueba");
-        
+
         TipoObjetoService t_obj_service = (TipoObjetoService) context.getBean("tipoObjetoService");
-        List<TipoObjeto> tobjs = t_obj_service.findAllTipoObjetos();
-        TipoObjeto to = tobjs.get(0);
+        Set<TipoObjeto> tobjs = t_obj_service.findAllTipoObjetos();
+        TipoObjeto to = tobjs.iterator().next();
         objeto.setTipo(to);
-        
+
         ObjetoDao instance = new ObjetoDaoImpl();
         service.saveObjeto(objeto);
 
@@ -214,7 +211,7 @@ public class ObjetoDaoTest {
         public void saveObjeto(Objeto objeto) {
         }
 
-        public List<Objeto> findAllObjetos() {
+        public Set<Objeto> findAllObjetos() {
             return null;
         }
 
@@ -229,4 +226,29 @@ public class ObjetoDaoTest {
         }
     }
 
+    
+    private void tenerObjetos (){
+        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        service = (ObjetoService) context.getBean("objetoService");
+        t_obj_service = (TipoObjetoService) context.getBean("tipoObjetoService");
+
+        Set<TipoObjeto> tobjs = t_obj_service.findAllTipoObjetos();
+        if (tobjs.isEmpty()) {
+            TipoObjeto to_p = new TipoObjeto();
+            to_p.setDegradado(10);
+            to_p.setDurabilidad_stnd(10);
+            to_p.setNombre("tipo objeto de prueba");
+            to_p.setPeso_stnd(10);
+            to_p.setTam_stnd(10);
+            
+            t_obj_service.saveTipoObjeto(to_p);
+            
+            Objeto objeto = new Objeto();
+            objeto.setDegradado_actual(1500);
+            objeto.setNombre("Objeto de Prueba basico");
+            objeto.setTipo(to_p);
+            service.saveObjeto(objeto);
+        }
+    }
+    
 }

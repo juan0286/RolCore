@@ -1,6 +1,7 @@
 package com.websystique.spring.dao;
 
-import java.util.List;
+import com.websystique.spring.model.BonoExp;
+import java.util.Set;
 
 import org.hibernate.Criteria;
 import org.hibernate.Query;
@@ -8,6 +9,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import com.websystique.spring.model.Objeto;
+import java.util.HashSet;
 
 @Repository("objetoDao")
 public class ObjetoDaoImpl extends AbstractDao implements ObjetoDao{
@@ -17,9 +19,9 @@ public class ObjetoDaoImpl extends AbstractDao implements ObjetoDao{
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Objeto> findAllObjetos() {
+	public Set<Objeto> findAllObjetos() {
 		Criteria criteria = getSession().createCriteria(Objeto.class);
-		return (List<Objeto>) criteria.list();
+		return new HashSet<Objeto>(criteria.list());
 	}
 
 	public void deleteObjetoByNombre(String nombre) {

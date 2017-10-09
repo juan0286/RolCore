@@ -1,6 +1,6 @@
 package com.websystique.spring.dao;
 
-import java.util.List;
+import java.util.Set;
 
 import org.hibernate.Criteria;
 import org.hibernate.Query;
@@ -8,6 +8,8 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import com.websystique.spring.model.Jugador;
+import com.websystique.spring.model.caractPj.Hab_secundaria;
+import java.util.HashSet;
 
 @Repository("jugadorDao")
 public class JugadorDaoImpl extends AbstractDao implements JugadorDao {
@@ -17,9 +19,9 @@ public class JugadorDaoImpl extends AbstractDao implements JugadorDao {
     }
 
     @SuppressWarnings("unchecked")
-    public List<Jugador> findAllJugadors() {
+    public Set<Jugador> findAllJugadors() {
         Criteria criteria = getSession().createCriteria(Jugador.class);
-        return (List<Jugador>) criteria.list();
+        return  new HashSet<Jugador>(criteria.list());
     }
 
     public void deleteJugadorById(long id) {

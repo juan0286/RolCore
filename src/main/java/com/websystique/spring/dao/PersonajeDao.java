@@ -1,6 +1,6 @@
 package com.websystique.spring.dao;
 
-import java.util.List;
+import java.util.Set;
 
 import com.websystique.spring.model.Personaje;
 
@@ -8,7 +8,7 @@ public interface PersonajeDao {
 
 	void savePersonaje(Personaje personaje);
 	
-	List<Personaje> findAllPersonajes();
+	Set<Personaje> findAllPersonajes();
 	
 	void deletePersonajeById(long id);
 	

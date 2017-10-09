@@ -76,6 +76,23 @@ public class Objeto implements Serializable {
     public void setTipo(TipoObjeto tipo) {
         this.tipoObjeto = tipo;
     }
+
+    public String getApodo() {
+        return apodo;
+    }
+
+    public void setApodo(String apodo) {
+        this.apodo = apodo;
+    }
+
+    public TipoObjeto getTipoObjeto() {
+        return tipoObjeto;
+    }
+
+    public void setTipoObjeto(TipoObjeto tipoObjeto) {
+        this.tipoObjeto = tipoObjeto;
+    }
+    
     
 
     @Override

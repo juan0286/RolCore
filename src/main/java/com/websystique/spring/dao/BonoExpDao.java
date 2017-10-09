@@ -1,14 +1,17 @@
 package com.websystique.spring.dao;
 
-import java.util.List;
+import java.util.Set;
 
 import com.websystique.spring.model.BonoExp;
+import com.websystique.spring.model.Personaje;
 
 public interface BonoExpDao {
 
 	void saveBonoExp(BonoExp bonoExp);
 	
-	List<BonoExp> findAllBonoExps();
+	Set<BonoExp> findAllBonoExps();
+        
+        Set<BonoExp> findAllBonoExpsForPj(Personaje pj);
 	
 	void deleteBonoExpById(long id);
 	

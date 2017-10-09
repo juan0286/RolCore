@@ -1,6 +1,6 @@
 package com.websystique.spring.dao;
 
-import java.util.List;
+import java.util.Set;
 
 import com.websystique.spring.model.caractPj.Idioma;
 
@@ -8,7 +8,7 @@ public interface IdiomaDao {
 
 	void saveIdioma(Idioma idioma);
 	
-	List<Idioma> findAllIdiomas();
+	Set<Idioma> findAllIdiomas();
 	
 	void deleteIdiomaById(long id);
 	

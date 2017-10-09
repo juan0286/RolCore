@@ -1,6 +1,6 @@
 package com.websystique.spring.dao;
 
-import java.util.List;
+import java.util.Set;
 
 import com.websystique.spring.model.Objeto;
 
@@ -8,7 +8,7 @@ public interface ObjetoDao {
 
 	void saveObjeto(Objeto objeto);
 	
-	List<Objeto> findAllObjetos();
+	Set<Objeto> findAllObjetos();
 	
 	void deleteObjetoByNombre(String nombre);
 	

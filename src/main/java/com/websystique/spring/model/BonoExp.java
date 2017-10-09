@@ -7,6 +7,7 @@ package com.websystique.spring.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,8 +28,8 @@ public class BonoExp implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id_bonoexp;
    
-    @ManyToOne
-    private Personaje pj;
+    @ManyToOne(cascade = CascadeType.REFRESH)
+    private Personaje pj;    
     
     @Column(nullable = false)
     private int bono;

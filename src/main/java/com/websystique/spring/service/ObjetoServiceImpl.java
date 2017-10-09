@@ -1,6 +1,6 @@
 package com.websystique.spring.service;
 
-import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +20,7 @@ public class ObjetoServiceImpl implements ObjetoService{
 		dao.saveObjeto(objeto);
 	}
 
-	public List<Objeto> findAllObjetos() {
+	public Set<Objeto> findAllObjetos() {
 		return dao.findAllObjetos();
 	}
 

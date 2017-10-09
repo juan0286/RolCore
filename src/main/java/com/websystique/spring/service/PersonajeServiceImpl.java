@@ -1,6 +1,6 @@
 package com.websystique.spring.service;
 
-import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +20,7 @@ public class PersonajeServiceImpl implements PersonajeService{
 		dao.savePersonaje(personaje);
 	}
 
-	public List<Personaje> findAllPersonajes() {
+	public Set<Personaje> findAllPersonajes() {
 		return dao.findAllPersonajes();
 	}
 

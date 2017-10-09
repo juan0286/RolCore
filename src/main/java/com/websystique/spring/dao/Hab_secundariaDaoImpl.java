@@ -1,6 +1,7 @@
 package com.websystique.spring.dao;
 
-import java.util.List;
+import com.websystique.spring.model.BonoExp;
+import java.util.Set;
 
 import org.hibernate.Criteria;
 import org.hibernate.Query;
@@ -8,6 +9,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import com.websystique.spring.model.caractPj.Hab_secundaria;
+import java.util.HashSet;
 
 @Repository("hab_secundariaDao")
 public class Hab_secundariaDaoImpl extends AbstractDao implements Hab_secundariaDao{
@@ -18,9 +20,9 @@ public class Hab_secundariaDaoImpl extends AbstractDao implements Hab_secundaria
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Hab_secundaria> findAllHab_secundarias() {
+	public Set<Hab_secundaria> findAllHab_secundarias() {
 		Criteria criteria = getSession().createCriteria(Hab_secundaria.class);
-		return (List<Hab_secundaria>) criteria.list();
+		return new HashSet<Hab_secundaria>(criteria.list());
 	}
 
 	public void deleteHab_secundariaById(long id) {

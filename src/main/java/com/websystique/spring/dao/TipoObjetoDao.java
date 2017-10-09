@@ -1,6 +1,6 @@
 package com.websystique.spring.dao;
 
-import java.util.List;
+import java.util.Set;
 
 import com.websystique.spring.model.TipoObjeto;
 
@@ -8,7 +8,7 @@ public interface TipoObjetoDao {
 
 	void saveTipoObjeto(TipoObjeto objeto);
 	
-	List<TipoObjeto> findAllTipoObjetos();
+	Set<TipoObjeto> findAllTipoObjetos();
 	
 	void deleteTipoObjetoByNombre(String nombre);
 	

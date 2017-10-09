@@ -1,6 +1,7 @@
 package com.websystique.spring.dao;
 
-import java.util.List;
+import com.websystique.spring.model.BonoExp;
+import java.util.Set;
 
 import org.hibernate.Criteria;
 import org.hibernate.Query;
@@ -8,6 +9,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import com.websystique.spring.model.caractPj.Idioma;
+import java.util.HashSet;
 
 @Repository("idiomaDao")
 public class IdiomaDaoImpl extends AbstractDao implements IdiomaDao{
@@ -18,9 +20,9 @@ public class IdiomaDaoImpl extends AbstractDao implements IdiomaDao{
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Idioma> findAllIdiomas() {
+	public Set<Idioma> findAllIdiomas() {
 		Criteria criteria = getSession().createCriteria(Idioma.class);
-		return (List<Idioma>) criteria.list();
+		return new HashSet<Idioma>(criteria.list());
 	}
 
 	public void deleteIdiomaById(long id) {

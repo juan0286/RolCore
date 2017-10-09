@@ -1,6 +1,6 @@
 package com.websystique.spring.service;
 
-import java.util.List;
+import java.util.Set;
 
 import com.websystique.spring.model.TipoObjeto;
 
@@ -8,7 +8,7 @@ public interface TipoObjetoService {
 
 	void saveTipoObjeto(TipoObjeto objeto);
 
-	List<TipoObjeto> findAllTipoObjetos();
+	Set<TipoObjeto> findAllTipoObjetos();
 
 	void deleteTipoObjetoByNombre(String nombre);
 

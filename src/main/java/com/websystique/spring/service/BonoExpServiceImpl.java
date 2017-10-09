@@ -1,6 +1,6 @@
 package com.websystique.spring.service;
 
-import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.websystique.spring.dao.BonoExpDao;
 import com.websystique.spring.model.BonoExp;
+import com.websystique.spring.model.Personaje;
 
 @Service("bonoExpService")
 @Transactional
@@ -20,8 +21,12 @@ public class BonoExpServiceImpl implements BonoExpService{
 		dao.saveBonoExp(bonoExp);
 	}
 
-	public List<BonoExp> findAllBonoExps() {
+	public Set<BonoExp> findAllBonoExps() {
 		return dao.findAllBonoExps();
+	}
+        
+	public Set<BonoExp> findAllBonoExpsForPj(Personaje pj) {
+		return dao.findAllBonoExpsForPj(pj);
 	}
 
 	public void deleteBonoExpById(long id) {

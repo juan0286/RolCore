@@ -6,7 +6,10 @@
 package com.websystique.spring;
 
 import com.websystique.spring.model.Jugador;
+import com.websystique.spring.model.Master;
+import com.websystique.spring.model.Objeto;
 import com.websystique.spring.model.Personaje;
+import com.websystique.spring.model.TipoObjeto;
 import com.websystique.spring.model.caractPj.Caracteristicas;
 import com.websystique.spring.model.caractPj.Hab_armadura;
 import com.websystique.spring.model.caractPj.Hab_armas;
@@ -21,7 +24,7 @@ import com.websystique.spring.model.caractPj.Idioma_desarrollo;
 import com.websystique.spring.model.caractPj.Resistencias;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
+import java.util.Set;
 
 /**
  *
@@ -41,7 +44,7 @@ public class Creador {
         // creacion de Armas
         
         // creacion de Objetos
-        
+        crearObjetos();
         // creacion de Localidades
         
         // creacion de Sortilegios
@@ -55,14 +58,20 @@ public class Creador {
     
     public static void crearAdminMaster(){
         
-        Jugador master = new Jugador();
-        master.setNombre("Master");
-        master.setPerfil(Jugador.PERFIL_ADMIN);        
-        master.setNombre_usuario("master");
-        master.setPassword("gato");
-        master.setCumple(new Date(1986, 02, 28));        
+        Master master = new Master();
+        master.setNombre("Juan");        
+        master.setUsuario("TiranoMaster");
+        master.setPassword("1");
         
-        HibernateDao.crearJugador(master);
+
+        Master masterDos = new Master();
+        masterDos.setNombre("MasterJuan");        
+        masterDos.setUsuario("OtroMaster");
+        masterDos.setPassword("1");
+        
+        
+        HibernateDao.crearMaster(master);
+        HibernateDao.crearMaster(masterDos);
     }
     
     public static void crearNeo(){
@@ -140,7 +149,7 @@ public class Creador {
         habilidades.setHabArmadura(ha);
         habilidades.setHabArmas(har);
         habilidades.setHabGenerales(hg);
-        //habilidades.setHabSecundarias(new List>habSecundarias);
+        //habilidades.setHabSecundarias(new Set>habSecundarias);
         habilidades.setHabSubterfugio(hs);
         habilidades.setHabMagicas(hm);
         habilidades.setResistencias(r);
@@ -176,7 +185,7 @@ public class Creador {
         idiomasDeNeo.put("Lengua Negra", 5);
         
         
-        List<Idioma> todosIdiomas = HibernateDao.todosLosIdiomas();
+        Set<Idioma> todosIdiomas = HibernateDao.todosLosIdiomas();
         
         for (Idioma id : todosIdiomas) {
             if (idiomasDeNeo.containsKey(id.getNombre())){
@@ -197,7 +206,7 @@ public class Creador {
         habSecDeNeo.put("Señales", 40);
         
         
-        List<Hab_secundaria> todashabilidadess = HibernateDao.todosLasHabilidadesSecundarias();
+        Set<Hab_secundaria> todashabilidadess = HibernateDao.todosLasHabilidadesSecundarias();
         
         for (Hab_secundaria id : todashabilidadess) {
             if (habSecDeNeo.containsKey(id.getNombre())){
@@ -404,6 +413,21 @@ public class Creador {
 
         
 
+    }
+
+    private static void crearObjetos() {
+
+        TipoObjeto to1 = new TipoObjeto();
+        to1.setNombre("anillo");
+        to1.setDegradado(999999);
+        to1.setDurabilidad_stnd(999999);
+        to1.setPeso_stnd(1);
+        
+        Objeto o = new Objeto();
+        o.setTipo(to1);
+        o.setDegradado_actual(5);        
+        
+        HibernateDao.crearObjeto(o);
     }
     
     

@@ -43,7 +43,7 @@ public class Jugador  implements Serializable{
     @Column(nullable = false)
     private Date cumple;
     
-    @OneToOne(cascade={CascadeType.PERSIST,CascadeType.REMOVE}) 
+    @OneToOne(cascade={CascadeType.ALL}) 
     private Personaje pj;
     // private set<Mesanje> mensajes;
 
