@@ -1,0 +1,1079 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite tests="5" failures="0" name="com.websystique.spring.dao.ObjetoDaoTest" time="75.049" errors="5" skipped="0">
+  <properties>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="sun.boot.library.path" value="/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64"/>
+    <property name="java.vm.version" value="25.131-b11"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="maven.multiModuleProjectDirectory" value="/home/xainmurdok/src/poised-ceiling-182418/capitanesCore/RolCore"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="path.separator" value=":"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value="unknown"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="/home/xainmurdok/src/poised-ceiling-182418/capitanesCore/RolCore"/>
+    <property name="java.runtime.version" value="1.8.0_131-8u131-b11-1~bpo8+1-b11"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
+    <property name="java.endorsed.dirs" value="/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/endorsed"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.io.tmpdir" value="/tmp"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="os.name" value="Linux"/>
+    <property name="classworlds.conf" value="/apache-maven-3.3.9/bin/m2.conf"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="52.0"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="os.version" value="3.16.0-4-amd64"/>
+    <property name="user.home" value="/home/xainmurdok"/>
+    <property name="user.timezone" value="America/Araguaina"/>
+    <property name="java.awt.printerjob" value="sun.print.PSPrinterJob"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.specification.version" value="1.8"/>
+    <property name="user.name" value="xainmurdok"/>
+    <property name="java.class.path" value="/apache-maven-3.3.9/boot/plexus-classworlds-2.5.2.jar"/>
+    <property name="java.vm.specification.version" value="1.8"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.home" value="/usr/lib/jvm/java-8-openjdk-amd64/jre"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher package"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.language" value="en"/>
+    <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.version" value="1.8.0_131"/>
+    <property name="java.ext.dirs" value="/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext:/usr/java/packages/lib/ext"/>
+    <property name="securerandom.source" value="file:/dev/./urandom"/>
+    <property name="sun.boot.class.path" value="/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/resources.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jsse.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jce.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/charsets.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jfr.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/classes"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="maven.home" value="/apache-maven-3.3.9"/>
+    <property name="file.separator" value="/"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.cpu.isalist" value=""/>
+  </properties>
+  <testcase classname="com.websystique.spring.dao.ObjetoDaoTest" name="testFindByNombre" time="21.155">
+    <error message="could not execute statement" type="org.hibernate.exception.SQLGrammarException">org.hibernate.exception.SQLGrammarException: could not execute statement
+	at org.hibernate.exception.internal.SQLExceptionTypeDelegate.convert(SQLExceptionTypeDelegate.java:80)
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:49)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:126)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:112)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:211)
+	at org.hibernate.engine.query.spi.NativeSQLQueryPlan.performExecuteUpdate(NativeSQLQueryPlan.java:211)
+	at org.hibernate.internal.SessionImpl.executeNativeUpdate(SessionImpl.java:1310)
+	at org.hibernate.internal.SQLQueryImpl.executeUpdate(SQLQueryImpl.java:389)
+	at com.websystique.spring.dao.ObjetoDaoImpl.deleteObjetoByNombre(ObjetoDaoImpl.java:28)
+	at com.websystique.spring.service.ObjetoServiceImpl.deleteObjetoByNombre(ObjetoServiceImpl.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:317)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:190)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:98)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:262)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:95)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:207)
+	at com.sun.proxy.$Proxy41.deleteObjetoByNombre(Unknown Source)
+	at com.websystique.spring.dao.ObjetoDaoTest.testFindByNombre(ObjetoDaoTest.java:154)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:252)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:141)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:112)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:189)
+	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:165)
+	at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:85)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table &apos;rol276.Objeto&apos; doesn&apos;t exist
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:408)
+	at com.mysql.jdbc.Util.getInstance(Util.java:383)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1062)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:4226)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:4158)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2615)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2776)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2840)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:2082)
+	at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:2334)
+	at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:2262)
+	at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:2246)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:208)
+	... 52 more
+</error>
+    <system-out>findByNombre
+Hibernate: 
+    delete 
+    from
+        Objeto 
+    where
+        nombre = ?
+</system-out>
+    <system-err>Oct 13, 2017 2:05:24 PM org.springframework.context.annotation.AnnotationConfigApplicationContext prepareRefresh
+INFO: Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@649d209a: startup date [Fri Oct 13 14:05:24 BRT 2017]; root of context hierarchy
+Oct 13, 2017 2:05:25 PM org.springframework.jdbc.datasource.DriverManagerDataSource setDriverClassName
+INFO: Loaded JDBC driver: com.mysql.jdbc.Driver
+Oct 13, 2017 2:05:25 PM org.hibernate.annotations.common.reflection.java.JavaReflectionManager &lt;clinit&gt;
+INFO: HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+Oct 13, 2017 2:05:25 PM org.hibernate.Version logVersion
+INFO: HHH000412: Hibernate Core {4.3.6.Final}
+Oct 13, 2017 2:05:25 PM org.hibernate.cfg.Environment &lt;clinit&gt;
+INFO: HHH000206: hibernate.properties not found
+Oct 13, 2017 2:05:25 PM org.hibernate.cfg.Environment buildBytecodeProvider
+INFO: HHH000021: Bytecode provider name : javassist
+Oct 13, 2017 2:05:26 PM com.google.cloud.sql.mysql.SocketFactory connect
+INFO: Connecting to Cloud SQL instance [poised-ceiling-182418:southamerica-east1:capitanes].
+Oct 13, 2017 2:05:26 PM com.google.cloud.sql.core.SslSocketFactory getInstance
+INFO: First Cloud SQL connection, generating RSA key pair.
+Oct 13, 2017 2:05:28 PM com.google.cloud.sql.core.SslSocketFactory fetchInstanceSslInfo
+INFO: Obtaining ephemeral certificate for Cloud SQL instance [poised-ceiling-182418:southamerica-east1:capitanes].
+Oct 13, 2017 2:05:30 PM com.google.cloud.sql.core.SslSocketFactory createAndConfigureSocket
+INFO: Connecting to Cloud SQL instance [poised-ceiling-182418:southamerica-east1:capitanes] on IP [35.199.93.0].
+Oct 13, 2017 2:05:32 PM org.hibernate.dialect.Dialect &lt;init&gt;
+INFO: HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+Oct 13, 2017 2:05:32 PM org.hibernate.engine.transaction.internal.TransactionFactoryInitiator initiateService
+INFO: HHH000399: Using default transaction strategy (direct JDBC transactions)
+Oct 13, 2017 2:05:32 PM org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory &lt;init&gt;
+INFO: HHH000397: Using ASTQueryTranslatorFactory
+Oct 13, 2017 2:05:33 PM org.hibernate.tool.hbm2ddl.SchemaValidator validate
+INFO: HHH000229: Running schema validator
+Oct 13, 2017 2:05:33 PM org.hibernate.tool.hbm2ddl.SchemaValidator validate
+INFO: HHH000102: Fetching database metadata
+Oct 13, 2017 2:05:33 PM com.google.cloud.sql.mysql.SocketFactory connect
+INFO: Connecting to Cloud SQL instance [poised-ceiling-182418:southamerica-east1:capitanes].
+Oct 13, 2017 2:05:33 PM com.google.cloud.sql.core.SslSocketFactory createAndConfigureSocket
+INFO: Connecting to Cloud SQL instance [poised-ceiling-182418:southamerica-east1:capitanes] on IP [35.199.93.0].
+Oct 13, 2017 2:05:34 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.bonoexp
+Oct 13, 2017 2:05:34 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [bono, fecha, id_bonoexp, motivo, pj_id_pj, aplicado]
+Oct 13, 2017 2:05:35 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.caracteristicas
+Oct 13, 2017 2:05:35 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [agi, pre, apa, con, fue, inte, i, id_car]
+Oct 13, 2017 2:05:35 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.hab_armadura
+Oct 13, 2017 2:05:35 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [ce, c, cm, id_ha, co, sa]
+Oct 13, 2017 2:05:35 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.hab_armas
+Oct 13, 2017 2:05:35 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [asta, dosmanos, arrojadizas, filo, pelea, contundentes, proyectiles, id_har]
+Oct 13, 2017 2:05:36 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.hab_generales
+Oct 13, 2017 2:05:36 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [trepar, rastrear, id_hg, montar, nadar]
+Oct 13, 2017 2:05:36 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.hab_magicas
+Oct 13, 2017 2:05:36 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [usarobjetos, sortilegiosbase, leerrunas, sortilegiosdirgidos, id_hm]
+Oct 13, 2017 2:05:37 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.hab_secundaria
+Oct 13, 2017 2:05:37 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [descripcion, tipo, modificador, id_hs, nombre]
+Oct 13, 2017 2:05:37 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.hab_secundaria_desarrollo
+Oct 13, 2017 2:05:37 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [id_h_s_desa, valor, hab_secundaria_id_hs]
+Oct 13, 2017 2:05:38 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.hab_subterfugio
+Oct 13, 2017 2:05:38 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [abrircerraduras, desactivartrampas, id_hs, acecharesconderse, emboscar]
+Oct 13, 2017 2:05:38 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.habilidades
+Oct 13, 2017 2:05:38 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [habmagicas_id_hm, habsubterfugio_id_hs, habgenerales_id_hg, habarmadura_id_ha, percepcion, bonificaciondefensiva, liderazgoinfluencia, id_habilidades, puntospoder, habarmas_id_har, resistencias_id_resist, desarrollofisico]
+Oct 13, 2017 2:05:39 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.habilidades_hab_secundaria_desarrollo
+Oct 13, 2017 2:05:39 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [habilidades_id_habilidades, habsecundarias_id_h_s_desa]
+Oct 13, 2017 2:05:39 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.habilidades_idioma_desarrollo
+Oct 13, 2017 2:05:39 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [idiomas_id_idioma_des, habilidades_id_habilidades]
+Oct 13, 2017 2:05:39 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.idioma
+Oct 13, 2017 2:05:39 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [descripcion, nombre, id_idioma]
+Oct 13, 2017 2:05:40 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.idioma_desarrollo
+Oct 13, 2017 2:05:40 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [id_idioma_des, valor, idioma_id_idioma]
+Oct 13, 2017 2:05:40 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.jugador
+Oct 13, 2017 2:05:40 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [id_jugador, password, pj_id_pj, cumple, nombre, nombre_usuario, perfil]
+Oct 13, 2017 2:05:41 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.objeto
+Oct 13, 2017 2:05:41 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [apodo, id_tipoobjeto, degradado_actual, id_objeto, nombre]
+Oct 13, 2017 2:05:41 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.personaje
+Oct 13, 2017 2:05:41 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [raza, peso, id_habil, id_pj, edad, nombre, estado_civico, motivacion, religion, alineamiento, id_caract, jugador_id_jugador, altura, genero, exp, nivel, diosesadorados, familia]
+Oct 13, 2017 2:05:42 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.personaje_bonoexp
+Oct 13, 2017 2:05:42 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [bonosexp_id_bonoexp, personaje_id_pj]
+Oct 13, 2017 2:05:42 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.resistencias
+Oct 13, 2017 2:05:42 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [enfermedades, calor, frio, canalizacion, mentalismo, escencia, id_resist, venenos]
+Oct 13, 2017 2:05:42 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.tipoobjeto
+Oct 13, 2017 2:05:42 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [id_tipoobjeto, tam_stnd, peso_stnd, durabilidad_stnd, nombre, degradado]
+Oct 13, 2017 2:05:43 PM org.springframework.orm.hibernate4.HibernateTransactionManager afterPropertiesSet
+INFO: Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@245a060f] of Hibernate SessionFactory for HibernateTransactionManager
+Oct 13, 2017 2:05:43 PM com.google.cloud.sql.mysql.SocketFactory connect
+INFO: Connecting to Cloud SQL instance [poised-ceiling-182418:southamerica-east1:capitanes].
+Oct 13, 2017 2:05:43 PM com.google.cloud.sql.core.SslSocketFactory createAndConfigureSocket
+INFO: Connecting to Cloud SQL instance [poised-ceiling-182418:southamerica-east1:capitanes] on IP [35.199.93.0].
+Oct 13, 2017 2:05:44 PM org.hibernate.engine.jdbc.spi.SqlExceptionHelper logExceptions
+WARN: SQL Error: 1146, SQLState: 42S02
+Oct 13, 2017 2:05:44 PM org.hibernate.engine.jdbc.spi.SqlExceptionHelper logExceptions
+ERROR: Table &apos;rol276.Objeto&apos; doesn&apos;t exist
+</system-err>
+  </testcase>
+  <testcase classname="com.websystique.spring.dao.ObjetoDaoTest" name="testDeleteObjetoByNombre" time="13.619">
+    <error message="could not execute statement" type="org.hibernate.exception.SQLGrammarException">org.hibernate.exception.SQLGrammarException: could not execute statement
+	at org.hibernate.exception.internal.SQLExceptionTypeDelegate.convert(SQLExceptionTypeDelegate.java:80)
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:49)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:126)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:112)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:211)
+	at org.hibernate.engine.query.spi.NativeSQLQueryPlan.performExecuteUpdate(NativeSQLQueryPlan.java:211)
+	at org.hibernate.internal.SessionImpl.executeNativeUpdate(SessionImpl.java:1310)
+	at org.hibernate.internal.SQLQueryImpl.executeUpdate(SQLQueryImpl.java:389)
+	at com.websystique.spring.dao.ObjetoDaoImpl.deleteObjetoByNombre(ObjetoDaoImpl.java:28)
+	at com.websystique.spring.service.ObjetoServiceImpl.deleteObjetoByNombre(ObjetoServiceImpl.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:317)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:190)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:98)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:262)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:95)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:207)
+	at com.sun.proxy.$Proxy41.deleteObjetoByNombre(Unknown Source)
+	at com.websystique.spring.dao.ObjetoDaoTest.testDeleteObjetoByNombre(ObjetoDaoTest.java:118)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:252)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:141)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:112)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:189)
+	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:165)
+	at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:85)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table &apos;rol276.Objeto&apos; doesn&apos;t exist
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:408)
+	at com.mysql.jdbc.Util.getInstance(Util.java:383)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1062)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:4226)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:4158)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2615)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2776)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2840)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:2082)
+	at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:2334)
+	at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:2262)
+	at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:2246)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:208)
+	... 52 more
+</error>
+    <system-out>deleteObjetoByNombre
+Hibernate: 
+    delete 
+    from
+        Objeto 
+    where
+        nombre = ?
+</system-out>
+    <system-err>Oct 13, 2017 2:05:45 PM org.springframework.context.annotation.AnnotationConfigApplicationContext prepareRefresh
+INFO: Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@5a8ba37c: startup date [Fri Oct 13 14:05:45 BRT 2017]; root of context hierarchy
+Oct 13, 2017 2:05:45 PM org.springframework.jdbc.datasource.DriverManagerDataSource setDriverClassName
+INFO: Loaded JDBC driver: com.mysql.jdbc.Driver
+Oct 13, 2017 2:05:45 PM com.google.cloud.sql.mysql.SocketFactory connect
+INFO: Connecting to Cloud SQL instance [poised-ceiling-182418:southamerica-east1:capitanes].
+Oct 13, 2017 2:05:45 PM com.google.cloud.sql.core.SslSocketFactory createAndConfigureSocket
+INFO: Connecting to Cloud SQL instance [poised-ceiling-182418:southamerica-east1:capitanes] on IP [35.199.93.0].
+Oct 13, 2017 2:05:46 PM org.hibernate.dialect.Dialect &lt;init&gt;
+INFO: HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+Oct 13, 2017 2:05:46 PM org.hibernate.engine.transaction.internal.TransactionFactoryInitiator initiateService
+INFO: HHH000399: Using default transaction strategy (direct JDBC transactions)
+Oct 13, 2017 2:05:46 PM org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory &lt;init&gt;
+INFO: HHH000397: Using ASTQueryTranslatorFactory
+Oct 13, 2017 2:05:46 PM org.hibernate.tool.hbm2ddl.SchemaValidator validate
+INFO: HHH000229: Running schema validator
+Oct 13, 2017 2:05:46 PM org.hibernate.tool.hbm2ddl.SchemaValidator validate
+INFO: HHH000102: Fetching database metadata
+Oct 13, 2017 2:05:46 PM com.google.cloud.sql.mysql.SocketFactory connect
+INFO: Connecting to Cloud SQL instance [poised-ceiling-182418:southamerica-east1:capitanes].
+Oct 13, 2017 2:05:46 PM com.google.cloud.sql.core.SslSocketFactory createAndConfigureSocket
+INFO: Connecting to Cloud SQL instance [poised-ceiling-182418:southamerica-east1:capitanes] on IP [35.199.93.0].
+Oct 13, 2017 2:05:48 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.bonoexp
+Oct 13, 2017 2:05:48 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [bono, fecha, id_bonoexp, motivo, pj_id_pj, aplicado]
+Oct 13, 2017 2:05:49 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.caracteristicas
+Oct 13, 2017 2:05:49 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [agi, pre, apa, con, fue, inte, i, id_car]
+Oct 13, 2017 2:05:49 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.hab_armadura
+Oct 13, 2017 2:05:49 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [ce, c, cm, id_ha, co, sa]
+Oct 13, 2017 2:05:49 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.hab_armas
+Oct 13, 2017 2:05:49 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [asta, dosmanos, arrojadizas, filo, pelea, contundentes, proyectiles, id_har]
+Oct 13, 2017 2:05:50 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.hab_generales
+Oct 13, 2017 2:05:50 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [trepar, rastrear, id_hg, montar, nadar]
+Oct 13, 2017 2:05:50 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.hab_magicas
+Oct 13, 2017 2:05:50 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [usarobjetos, sortilegiosbase, leerrunas, sortilegiosdirgidos, id_hm]
+Oct 13, 2017 2:05:51 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.hab_secundaria
+Oct 13, 2017 2:05:51 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [descripcion, tipo, modificador, id_hs, nombre]
+Oct 13, 2017 2:05:51 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.hab_secundaria_desarrollo
+Oct 13, 2017 2:05:51 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [id_h_s_desa, valor, hab_secundaria_id_hs]
+Oct 13, 2017 2:05:52 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.hab_subterfugio
+Oct 13, 2017 2:05:52 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [abrircerraduras, desactivartrampas, id_hs, acecharesconderse, emboscar]
+Oct 13, 2017 2:05:52 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.habilidades
+Oct 13, 2017 2:05:52 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [habmagicas_id_hm, habsubterfugio_id_hs, habgenerales_id_hg, habarmadura_id_ha, percepcion, bonificaciondefensiva, liderazgoinfluencia, id_habilidades, puntospoder, habarmas_id_har, resistencias_id_resist, desarrollofisico]
+Oct 13, 2017 2:05:52 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.habilidades_hab_secundaria_desarrollo
+Oct 13, 2017 2:05:52 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [habilidades_id_habilidades, habsecundarias_id_h_s_desa]
+Oct 13, 2017 2:05:53 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.habilidades_idioma_desarrollo
+Oct 13, 2017 2:05:53 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [idiomas_id_idioma_des, habilidades_id_habilidades]
+Oct 13, 2017 2:05:53 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.idioma
+Oct 13, 2017 2:05:53 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [descripcion, nombre, id_idioma]
+Oct 13, 2017 2:05:54 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.idioma_desarrollo
+Oct 13, 2017 2:05:54 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [id_idioma_des, valor, idioma_id_idioma]
+Oct 13, 2017 2:05:54 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.jugador
+Oct 13, 2017 2:05:54 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [id_jugador, password, pj_id_pj, cumple, nombre, nombre_usuario, perfil]
+Oct 13, 2017 2:05:55 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.objeto
+Oct 13, 2017 2:05:55 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [apodo, id_tipoobjeto, degradado_actual, id_objeto, nombre]
+Oct 13, 2017 2:05:55 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.personaje
+Oct 13, 2017 2:05:55 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [raza, peso, id_habil, id_pj, edad, nombre, estado_civico, motivacion, religion, alineamiento, id_caract, jugador_id_jugador, altura, genero, exp, nivel, diosesadorados, familia]
+Oct 13, 2017 2:05:55 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.personaje_bonoexp
+Oct 13, 2017 2:05:55 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [bonosexp_id_bonoexp, personaje_id_pj]
+Oct 13, 2017 2:05:56 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.resistencias
+Oct 13, 2017 2:05:56 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [enfermedades, calor, frio, canalizacion, mentalismo, escencia, id_resist, venenos]
+Oct 13, 2017 2:05:56 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.tipoobjeto
+Oct 13, 2017 2:05:56 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [id_tipoobjeto, tam_stnd, peso_stnd, durabilidad_stnd, nombre, degradado]
+Oct 13, 2017 2:05:56 PM org.springframework.orm.hibernate4.HibernateTransactionManager afterPropertiesSet
+INFO: Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@479f2dc2] of Hibernate SessionFactory for HibernateTransactionManager
+Oct 13, 2017 2:05:56 PM com.google.cloud.sql.mysql.SocketFactory connect
+INFO: Connecting to Cloud SQL instance [poised-ceiling-182418:southamerica-east1:capitanes].
+Oct 13, 2017 2:05:56 PM com.google.cloud.sql.core.SslSocketFactory createAndConfigureSocket
+INFO: Connecting to Cloud SQL instance [poised-ceiling-182418:southamerica-east1:capitanes] on IP [35.199.93.0].
+Oct 13, 2017 2:05:58 PM org.hibernate.engine.jdbc.spi.SqlExceptionHelper logExceptions
+WARN: SQL Error: 1146, SQLState: 42S02
+Oct 13, 2017 2:05:58 PM org.hibernate.engine.jdbc.spi.SqlExceptionHelper logExceptions
+ERROR: Table &apos;rol276.Objeto&apos; doesn&apos;t exist
+</system-err>
+  </testcase>
+  <testcase classname="com.websystique.spring.dao.ObjetoDaoTest" name="testUpdateObjeto" time="13.434">
+    <error message="could not execute statement" type="org.hibernate.exception.SQLGrammarException">org.hibernate.exception.SQLGrammarException: could not execute statement
+	at org.hibernate.exception.internal.SQLExceptionTypeDelegate.convert(SQLExceptionTypeDelegate.java:80)
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:49)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:126)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:112)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:211)
+	at org.hibernate.engine.query.spi.NativeSQLQueryPlan.performExecuteUpdate(NativeSQLQueryPlan.java:211)
+	at org.hibernate.internal.SessionImpl.executeNativeUpdate(SessionImpl.java:1310)
+	at org.hibernate.internal.SQLQueryImpl.executeUpdate(SQLQueryImpl.java:389)
+	at com.websystique.spring.dao.ObjetoDaoImpl.deleteObjetoByNombre(ObjetoDaoImpl.java:28)
+	at com.websystique.spring.service.ObjetoServiceImpl.deleteObjetoByNombre(ObjetoServiceImpl.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:317)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:190)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:98)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:262)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:95)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:207)
+	at com.sun.proxy.$Proxy41.deleteObjetoByNombre(Unknown Source)
+	at com.websystique.spring.dao.ObjetoDaoTest.testUpdateObjeto(ObjetoDaoTest.java:183)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:252)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:141)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:112)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:189)
+	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:165)
+	at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:85)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table &apos;rol276.Objeto&apos; doesn&apos;t exist
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:408)
+	at com.mysql.jdbc.Util.getInstance(Util.java:383)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1062)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:4226)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:4158)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2615)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2776)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2840)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:2082)
+	at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:2334)
+	at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:2262)
+	at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:2246)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:208)
+	... 52 more
+</error>
+    <system-out>updateObjeto
+Hibernate: 
+    delete 
+    from
+        Objeto 
+    where
+        nombre = ?
+</system-out>
+    <system-err>Oct 13, 2017 2:05:59 PM org.springframework.context.annotation.AnnotationConfigApplicationContext prepareRefresh
+INFO: Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@25da615a: startup date [Fri Oct 13 14:05:59 BRT 2017]; root of context hierarchy
+Oct 13, 2017 2:05:59 PM org.springframework.jdbc.datasource.DriverManagerDataSource setDriverClassName
+INFO: Loaded JDBC driver: com.mysql.jdbc.Driver
+Oct 13, 2017 2:05:59 PM com.google.cloud.sql.mysql.SocketFactory connect
+INFO: Connecting to Cloud SQL instance [poised-ceiling-182418:southamerica-east1:capitanes].
+Oct 13, 2017 2:05:59 PM com.google.cloud.sql.core.SslSocketFactory createAndConfigureSocket
+INFO: Connecting to Cloud SQL instance [poised-ceiling-182418:southamerica-east1:capitanes] on IP [35.199.93.0].
+Oct 13, 2017 2:06:00 PM org.hibernate.dialect.Dialect &lt;init&gt;
+INFO: HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+Oct 13, 2017 2:06:00 PM org.hibernate.engine.transaction.internal.TransactionFactoryInitiator initiateService
+INFO: HHH000399: Using default transaction strategy (direct JDBC transactions)
+Oct 13, 2017 2:06:00 PM org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory &lt;init&gt;
+INFO: HHH000397: Using ASTQueryTranslatorFactory
+Oct 13, 2017 2:06:00 PM org.hibernate.tool.hbm2ddl.SchemaValidator validate
+INFO: HHH000229: Running schema validator
+Oct 13, 2017 2:06:00 PM org.hibernate.tool.hbm2ddl.SchemaValidator validate
+INFO: HHH000102: Fetching database metadata
+Oct 13, 2017 2:06:00 PM com.google.cloud.sql.mysql.SocketFactory connect
+INFO: Connecting to Cloud SQL instance [poised-ceiling-182418:southamerica-east1:capitanes].
+Oct 13, 2017 2:06:00 PM com.google.cloud.sql.core.SslSocketFactory createAndConfigureSocket
+INFO: Connecting to Cloud SQL instance [poised-ceiling-182418:southamerica-east1:capitanes] on IP [35.199.93.0].
+Oct 13, 2017 2:06:02 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.bonoexp
+Oct 13, 2017 2:06:02 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [bono, fecha, id_bonoexp, motivo, pj_id_pj, aplicado]
+Oct 13, 2017 2:06:02 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.caracteristicas
+Oct 13, 2017 2:06:02 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [agi, pre, apa, con, fue, inte, i, id_car]
+Oct 13, 2017 2:06:03 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.hab_armadura
+Oct 13, 2017 2:06:03 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [ce, c, cm, id_ha, co, sa]
+Oct 13, 2017 2:06:03 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.hab_armas
+Oct 13, 2017 2:06:03 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [asta, dosmanos, arrojadizas, filo, pelea, contundentes, proyectiles, id_har]
+Oct 13, 2017 2:06:03 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.hab_generales
+Oct 13, 2017 2:06:03 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [trepar, rastrear, id_hg, montar, nadar]
+Oct 13, 2017 2:06:04 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.hab_magicas
+Oct 13, 2017 2:06:04 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [usarobjetos, sortilegiosbase, leerrunas, sortilegiosdirgidos, id_hm]
+Oct 13, 2017 2:06:04 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.hab_secundaria
+Oct 13, 2017 2:06:04 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [descripcion, tipo, modificador, id_hs, nombre]
+Oct 13, 2017 2:06:05 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.hab_secundaria_desarrollo
+Oct 13, 2017 2:06:05 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [id_h_s_desa, valor, hab_secundaria_id_hs]
+Oct 13, 2017 2:06:05 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.hab_subterfugio
+Oct 13, 2017 2:06:05 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [abrircerraduras, desactivartrampas, id_hs, acecharesconderse, emboscar]
+Oct 13, 2017 2:06:06 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.habilidades
+Oct 13, 2017 2:06:06 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [habmagicas_id_hm, habsubterfugio_id_hs, habgenerales_id_hg, habarmadura_id_ha, percepcion, bonificaciondefensiva, liderazgoinfluencia, id_habilidades, puntospoder, habarmas_id_har, resistencias_id_resist, desarrollofisico]
+Oct 13, 2017 2:06:06 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.habilidades_hab_secundaria_desarrollo
+Oct 13, 2017 2:06:06 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [habilidades_id_habilidades, habsecundarias_id_h_s_desa]
+Oct 13, 2017 2:06:06 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.habilidades_idioma_desarrollo
+Oct 13, 2017 2:06:06 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [idiomas_id_idioma_des, habilidades_id_habilidades]
+Oct 13, 2017 2:06:07 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.idioma
+Oct 13, 2017 2:06:07 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [descripcion, nombre, id_idioma]
+Oct 13, 2017 2:06:07 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.idioma_desarrollo
+Oct 13, 2017 2:06:07 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [id_idioma_des, valor, idioma_id_idioma]
+Oct 13, 2017 2:06:08 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.jugador
+Oct 13, 2017 2:06:08 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [id_jugador, password, pj_id_pj, cumple, nombre, nombre_usuario, perfil]
+Oct 13, 2017 2:06:08 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.objeto
+Oct 13, 2017 2:06:08 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [apodo, id_tipoobjeto, degradado_actual, id_objeto, nombre]
+Oct 13, 2017 2:06:09 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.personaje
+Oct 13, 2017 2:06:09 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [raza, peso, id_habil, id_pj, edad, nombre, estado_civico, motivacion, religion, alineamiento, id_caract, jugador_id_jugador, altura, genero, exp, nivel, diosesadorados, familia]
+Oct 13, 2017 2:06:09 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.personaje_bonoexp
+Oct 13, 2017 2:06:09 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [bonosexp_id_bonoexp, personaje_id_pj]
+Oct 13, 2017 2:06:09 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.resistencias
+Oct 13, 2017 2:06:09 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [enfermedades, calor, frio, canalizacion, mentalismo, escencia, id_resist, venenos]
+Oct 13, 2017 2:06:10 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.tipoobjeto
+Oct 13, 2017 2:06:10 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [id_tipoobjeto, tam_stnd, peso_stnd, durabilidad_stnd, nombre, degradado]
+Oct 13, 2017 2:06:10 PM org.springframework.orm.hibernate4.HibernateTransactionManager afterPropertiesSet
+INFO: Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@282ffbf5] of Hibernate SessionFactory for HibernateTransactionManager
+Oct 13, 2017 2:06:10 PM com.google.cloud.sql.mysql.SocketFactory connect
+INFO: Connecting to Cloud SQL instance [poised-ceiling-182418:southamerica-east1:capitanes].
+Oct 13, 2017 2:06:10 PM com.google.cloud.sql.core.SslSocketFactory createAndConfigureSocket
+INFO: Connecting to Cloud SQL instance [poised-ceiling-182418:southamerica-east1:capitanes] on IP [35.199.93.0].
+Oct 13, 2017 2:06:11 PM org.hibernate.engine.jdbc.spi.SqlExceptionHelper logExceptions
+WARN: SQL Error: 1146, SQLState: 42S02
+Oct 13, 2017 2:06:11 PM org.hibernate.engine.jdbc.spi.SqlExceptionHelper logExceptions
+ERROR: Table &apos;rol276.Objeto&apos; doesn&apos;t exist
+</system-err>
+  </testcase>
+  <testcase classname="com.websystique.spring.dao.ObjetoDaoTest" name="testSaveObjeto" time="13.357">
+    <error message="could not execute statement" type="org.hibernate.exception.SQLGrammarException">org.hibernate.exception.SQLGrammarException: could not execute statement
+	at org.hibernate.exception.internal.SQLExceptionTypeDelegate.convert(SQLExceptionTypeDelegate.java:80)
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:49)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:126)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:112)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:211)
+	at org.hibernate.engine.query.spi.NativeSQLQueryPlan.performExecuteUpdate(NativeSQLQueryPlan.java:211)
+	at org.hibernate.internal.SessionImpl.executeNativeUpdate(SessionImpl.java:1310)
+	at org.hibernate.internal.SQLQueryImpl.executeUpdate(SQLQueryImpl.java:389)
+	at com.websystique.spring.dao.ObjetoDaoImpl.deleteObjetoByNombre(ObjetoDaoImpl.java:28)
+	at com.websystique.spring.service.ObjetoServiceImpl.deleteObjetoByNombre(ObjetoServiceImpl.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:317)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:190)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:98)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:262)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:95)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:207)
+	at com.sun.proxy.$Proxy41.deleteObjetoByNombre(Unknown Source)
+	at com.websystique.spring.dao.ObjetoDaoTest.testSaveObjeto(ObjetoDaoTest.java:59)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:252)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:141)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:112)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:189)
+	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:165)
+	at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:85)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table &apos;rol276.Objeto&apos; doesn&apos;t exist
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:408)
+	at com.mysql.jdbc.Util.getInstance(Util.java:383)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1062)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:4226)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:4158)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2615)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2776)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2840)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:2082)
+	at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:2334)
+	at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:2262)
+	at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:2246)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:208)
+	... 52 more
+</error>
+    <system-out>saveObjeto
+Hibernate: 
+    delete 
+    from
+        Objeto 
+    where
+        nombre = ?
+</system-out>
+    <system-err>Oct 13, 2017 2:06:12 PM org.springframework.context.annotation.AnnotationConfigApplicationContext prepareRefresh
+INFO: Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@1640190a: startup date [Fri Oct 13 14:06:12 BRT 2017]; root of context hierarchy
+Oct 13, 2017 2:06:12 PM org.springframework.jdbc.datasource.DriverManagerDataSource setDriverClassName
+INFO: Loaded JDBC driver: com.mysql.jdbc.Driver
+Oct 13, 2017 2:06:12 PM com.google.cloud.sql.mysql.SocketFactory connect
+INFO: Connecting to Cloud SQL instance [poised-ceiling-182418:southamerica-east1:capitanes].
+Oct 13, 2017 2:06:12 PM com.google.cloud.sql.core.SslSocketFactory createAndConfigureSocket
+INFO: Connecting to Cloud SQL instance [poised-ceiling-182418:southamerica-east1:capitanes] on IP [35.199.93.0].
+Oct 13, 2017 2:06:13 PM org.hibernate.dialect.Dialect &lt;init&gt;
+INFO: HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+Oct 13, 2017 2:06:13 PM org.hibernate.engine.transaction.internal.TransactionFactoryInitiator initiateService
+INFO: HHH000399: Using default transaction strategy (direct JDBC transactions)
+Oct 13, 2017 2:06:13 PM org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory &lt;init&gt;
+INFO: HHH000397: Using ASTQueryTranslatorFactory
+Oct 13, 2017 2:06:13 PM org.hibernate.tool.hbm2ddl.SchemaValidator validate
+INFO: HHH000229: Running schema validator
+Oct 13, 2017 2:06:13 PM org.hibernate.tool.hbm2ddl.SchemaValidator validate
+INFO: HHH000102: Fetching database metadata
+Oct 13, 2017 2:06:13 PM com.google.cloud.sql.mysql.SocketFactory connect
+INFO: Connecting to Cloud SQL instance [poised-ceiling-182418:southamerica-east1:capitanes].
+Oct 13, 2017 2:06:13 PM com.google.cloud.sql.core.SslSocketFactory createAndConfigureSocket
+INFO: Connecting to Cloud SQL instance [poised-ceiling-182418:southamerica-east1:capitanes] on IP [35.199.93.0].
+Oct 13, 2017 2:06:15 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.bonoexp
+Oct 13, 2017 2:06:15 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [bono, fecha, id_bonoexp, motivo, pj_id_pj, aplicado]
+Oct 13, 2017 2:06:15 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.caracteristicas
+Oct 13, 2017 2:06:15 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [agi, pre, apa, con, fue, inte, i, id_car]
+Oct 13, 2017 2:06:16 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.hab_armadura
+Oct 13, 2017 2:06:16 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [ce, c, cm, id_ha, co, sa]
+Oct 13, 2017 2:06:16 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.hab_armas
+Oct 13, 2017 2:06:16 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [asta, dosmanos, arrojadizas, filo, pelea, contundentes, proyectiles, id_har]
+Oct 13, 2017 2:06:17 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.hab_generales
+Oct 13, 2017 2:06:17 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [trepar, rastrear, id_hg, montar, nadar]
+Oct 13, 2017 2:06:17 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.hab_magicas
+Oct 13, 2017 2:06:17 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [usarobjetos, sortilegiosbase, leerrunas, sortilegiosdirgidos, id_hm]
+Oct 13, 2017 2:06:18 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.hab_secundaria
+Oct 13, 2017 2:06:18 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [descripcion, tipo, modificador, id_hs, nombre]
+Oct 13, 2017 2:06:18 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.hab_secundaria_desarrollo
+Oct 13, 2017 2:06:18 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [id_h_s_desa, valor, hab_secundaria_id_hs]
+Oct 13, 2017 2:06:18 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.hab_subterfugio
+Oct 13, 2017 2:06:18 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [abrircerraduras, desactivartrampas, id_hs, acecharesconderse, emboscar]
+Oct 13, 2017 2:06:19 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.habilidades
+Oct 13, 2017 2:06:19 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [habmagicas_id_hm, habsubterfugio_id_hs, habgenerales_id_hg, habarmadura_id_ha, percepcion, bonificaciondefensiva, liderazgoinfluencia, id_habilidades, puntospoder, habarmas_id_har, resistencias_id_resist, desarrollofisico]
+Oct 13, 2017 2:06:19 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.habilidades_hab_secundaria_desarrollo
+Oct 13, 2017 2:06:19 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [habilidades_id_habilidades, habsecundarias_id_h_s_desa]
+Oct 13, 2017 2:06:20 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.habilidades_idioma_desarrollo
+Oct 13, 2017 2:06:20 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [idiomas_id_idioma_des, habilidades_id_habilidades]
+Oct 13, 2017 2:06:20 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.idioma
+Oct 13, 2017 2:06:20 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [descripcion, nombre, id_idioma]
+Oct 13, 2017 2:06:21 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.idioma_desarrollo
+Oct 13, 2017 2:06:21 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [id_idioma_des, valor, idioma_id_idioma]
+Oct 13, 2017 2:06:21 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.jugador
+Oct 13, 2017 2:06:21 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [id_jugador, password, pj_id_pj, cumple, nombre, nombre_usuario, perfil]
+Oct 13, 2017 2:06:21 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.objeto
+Oct 13, 2017 2:06:21 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [apodo, id_tipoobjeto, degradado_actual, id_objeto, nombre]
+Oct 13, 2017 2:06:22 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.personaje
+Oct 13, 2017 2:06:22 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [raza, peso, id_habil, id_pj, edad, nombre, estado_civico, motivacion, religion, alineamiento, id_caract, jugador_id_jugador, altura, genero, exp, nivel, diosesadorados, familia]
+Oct 13, 2017 2:06:22 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.personaje_bonoexp
+Oct 13, 2017 2:06:22 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [bonosexp_id_bonoexp, personaje_id_pj]
+Oct 13, 2017 2:06:23 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.resistencias
+Oct 13, 2017 2:06:23 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [enfermedades, calor, frio, canalizacion, mentalismo, escencia, id_resist, venenos]
+Oct 13, 2017 2:06:23 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.tipoobjeto
+Oct 13, 2017 2:06:23 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [id_tipoobjeto, tam_stnd, peso_stnd, durabilidad_stnd, nombre, degradado]
+Oct 13, 2017 2:06:23 PM org.springframework.orm.hibernate4.HibernateTransactionManager afterPropertiesSet
+INFO: Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@15b642b9] of Hibernate SessionFactory for HibernateTransactionManager
+Oct 13, 2017 2:06:23 PM com.google.cloud.sql.mysql.SocketFactory connect
+INFO: Connecting to Cloud SQL instance [poised-ceiling-182418:southamerica-east1:capitanes].
+Oct 13, 2017 2:06:23 PM com.google.cloud.sql.core.SslSocketFactory createAndConfigureSocket
+INFO: Connecting to Cloud SQL instance [poised-ceiling-182418:southamerica-east1:capitanes] on IP [35.199.93.0].
+Oct 13, 2017 2:06:25 PM org.hibernate.engine.jdbc.spi.SqlExceptionHelper logExceptions
+WARN: SQL Error: 1146, SQLState: 42S02
+Oct 13, 2017 2:06:25 PM org.hibernate.engine.jdbc.spi.SqlExceptionHelper logExceptions
+ERROR: Table &apos;rol276.Objeto&apos; doesn&apos;t exist
+</system-err>
+  </testcase>
+  <testcase classname="com.websystique.spring.dao.ObjetoDaoTest" name="testFindAllObjetos" time="13.484">
+    <error message="could not execute statement" type="org.hibernate.exception.SQLGrammarException">org.hibernate.exception.SQLGrammarException: could not execute statement
+	at org.hibernate.exception.internal.SQLExceptionTypeDelegate.convert(SQLExceptionTypeDelegate.java:80)
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:49)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:126)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:112)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:211)
+	at org.hibernate.engine.query.spi.NativeSQLQueryPlan.performExecuteUpdate(NativeSQLQueryPlan.java:211)
+	at org.hibernate.internal.SessionImpl.executeNativeUpdate(SessionImpl.java:1310)
+	at org.hibernate.internal.SQLQueryImpl.executeUpdate(SQLQueryImpl.java:389)
+	at com.websystique.spring.dao.ObjetoDaoImpl.deleteObjetoByNombre(ObjetoDaoImpl.java:28)
+	at com.websystique.spring.service.ObjetoServiceImpl.deleteObjetoByNombre(ObjetoServiceImpl.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:317)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:190)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:98)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:262)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:95)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:207)
+	at com.sun.proxy.$Proxy41.deleteObjetoByNombre(Unknown Source)
+	at com.websystique.spring.dao.ObjetoDaoTest.testFindAllObjetos(ObjetoDaoTest.java:89)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:252)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:141)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:112)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:189)
+	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:165)
+	at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:85)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table &apos;rol276.Objeto&apos; doesn&apos;t exist
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:408)
+	at com.mysql.jdbc.Util.getInstance(Util.java:383)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1062)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:4226)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:4158)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2615)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2776)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2840)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:2082)
+	at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:2334)
+	at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:2262)
+	at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:2246)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:208)
+	... 52 more
+</error>
+    <system-out>findAllObjetos
+Hibernate: 
+    delete 
+    from
+        Objeto 
+    where
+        nombre = ?
+</system-out>
+    <system-err>Oct 13, 2017 2:06:25 PM org.springframework.context.annotation.AnnotationConfigApplicationContext prepareRefresh
+INFO: Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@291373d3: startup date [Fri Oct 13 14:06:25 BRT 2017]; root of context hierarchy
+Oct 13, 2017 2:06:25 PM org.springframework.jdbc.datasource.DriverManagerDataSource setDriverClassName
+INFO: Loaded JDBC driver: com.mysql.jdbc.Driver
+Oct 13, 2017 2:06:25 PM com.google.cloud.sql.mysql.SocketFactory connect
+INFO: Connecting to Cloud SQL instance [poised-ceiling-182418:southamerica-east1:capitanes].
+Oct 13, 2017 2:06:25 PM com.google.cloud.sql.core.SslSocketFactory createAndConfigureSocket
+INFO: Connecting to Cloud SQL instance [poised-ceiling-182418:southamerica-east1:capitanes] on IP [35.199.93.0].
+Oct 13, 2017 2:06:27 PM org.hibernate.dialect.Dialect &lt;init&gt;
+INFO: HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+Oct 13, 2017 2:06:27 PM org.hibernate.engine.transaction.internal.TransactionFactoryInitiator initiateService
+INFO: HHH000399: Using default transaction strategy (direct JDBC transactions)
+Oct 13, 2017 2:06:27 PM org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory &lt;init&gt;
+INFO: HHH000397: Using ASTQueryTranslatorFactory
+Oct 13, 2017 2:06:27 PM org.hibernate.tool.hbm2ddl.SchemaValidator validate
+INFO: HHH000229: Running schema validator
+Oct 13, 2017 2:06:27 PM org.hibernate.tool.hbm2ddl.SchemaValidator validate
+INFO: HHH000102: Fetching database metadata
+Oct 13, 2017 2:06:27 PM com.google.cloud.sql.mysql.SocketFactory connect
+INFO: Connecting to Cloud SQL instance [poised-ceiling-182418:southamerica-east1:capitanes].
+Oct 13, 2017 2:06:27 PM com.google.cloud.sql.core.SslSocketFactory createAndConfigureSocket
+INFO: Connecting to Cloud SQL instance [poised-ceiling-182418:southamerica-east1:capitanes] on IP [35.199.93.0].
+Oct 13, 2017 2:06:28 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.bonoexp
+Oct 13, 2017 2:06:28 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [bono, fecha, id_bonoexp, motivo, pj_id_pj, aplicado]
+Oct 13, 2017 2:06:29 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.caracteristicas
+Oct 13, 2017 2:06:29 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [agi, pre, apa, con, fue, inte, i, id_car]
+Oct 13, 2017 2:06:29 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.hab_armadura
+Oct 13, 2017 2:06:29 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [ce, c, cm, id_ha, co, sa]
+Oct 13, 2017 2:06:30 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.hab_armas
+Oct 13, 2017 2:06:30 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [asta, dosmanos, arrojadizas, filo, pelea, contundentes, proyectiles, id_har]
+Oct 13, 2017 2:06:30 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.hab_generales
+Oct 13, 2017 2:06:30 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [trepar, rastrear, id_hg, montar, nadar]
+Oct 13, 2017 2:06:31 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.hab_magicas
+Oct 13, 2017 2:06:31 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [usarobjetos, sortilegiosbase, leerrunas, sortilegiosdirgidos, id_hm]
+Oct 13, 2017 2:06:31 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.hab_secundaria
+Oct 13, 2017 2:06:31 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [descripcion, tipo, modificador, id_hs, nombre]
+Oct 13, 2017 2:06:31 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.hab_secundaria_desarrollo
+Oct 13, 2017 2:06:31 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [id_h_s_desa, valor, hab_secundaria_id_hs]
+Oct 13, 2017 2:06:32 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.hab_subterfugio
+Oct 13, 2017 2:06:32 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [abrircerraduras, desactivartrampas, id_hs, acecharesconderse, emboscar]
+Oct 13, 2017 2:06:32 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.habilidades
+Oct 13, 2017 2:06:32 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [habmagicas_id_hm, habsubterfugio_id_hs, habgenerales_id_hg, habarmadura_id_ha, percepcion, bonificaciondefensiva, liderazgoinfluencia, id_habilidades, puntospoder, habarmas_id_har, resistencias_id_resist, desarrollofisico]
+Oct 13, 2017 2:06:33 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.habilidades_hab_secundaria_desarrollo
+Oct 13, 2017 2:06:33 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [habilidades_id_habilidades, habsecundarias_id_h_s_desa]
+Oct 13, 2017 2:06:33 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.habilidades_idioma_desarrollo
+Oct 13, 2017 2:06:33 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [idiomas_id_idioma_des, habilidades_id_habilidades]
+Oct 13, 2017 2:06:34 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.idioma
+Oct 13, 2017 2:06:34 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [descripcion, nombre, id_idioma]
+Oct 13, 2017 2:06:34 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.idioma_desarrollo
+Oct 13, 2017 2:06:34 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [id_idioma_des, valor, idioma_id_idioma]
+Oct 13, 2017 2:06:35 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.jugador
+Oct 13, 2017 2:06:35 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [id_jugador, password, pj_id_pj, cumple, nombre, nombre_usuario, perfil]
+Oct 13, 2017 2:06:35 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.objeto
+Oct 13, 2017 2:06:35 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [apodo, id_tipoobjeto, degradado_actual, id_objeto, nombre]
+Oct 13, 2017 2:06:35 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.personaje
+Oct 13, 2017 2:06:35 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [raza, peso, id_habil, id_pj, edad, nombre, estado_civico, motivacion, religion, alineamiento, id_caract, jugador_id_jugador, altura, genero, exp, nivel, diosesadorados, familia]
+Oct 13, 2017 2:06:36 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.personaje_bonoexp
+Oct 13, 2017 2:06:36 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [bonosexp_id_bonoexp, personaje_id_pj]
+Oct 13, 2017 2:06:36 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.resistencias
+Oct 13, 2017 2:06:36 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [enfermedades, calor, frio, canalizacion, mentalismo, escencia, id_resist, venenos]
+Oct 13, 2017 2:06:37 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000261: Table found: rol276.tipoobjeto
+Oct 13, 2017 2:06:37 PM org.hibernate.tool.hbm2ddl.TableMetadata &lt;init&gt;
+INFO: HHH000037: Columns: [id_tipoobjeto, tam_stnd, peso_stnd, durabilidad_stnd, nombre, degradado]
+Oct 13, 2017 2:06:37 PM org.springframework.orm.hibernate4.HibernateTransactionManager afterPropertiesSet
+INFO: Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@459b6c53] of Hibernate SessionFactory for HibernateTransactionManager
+Oct 13, 2017 2:06:37 PM com.google.cloud.sql.mysql.SocketFactory connect
+INFO: Connecting to Cloud SQL instance [poised-ceiling-182418:southamerica-east1:capitanes].
+Oct 13, 2017 2:06:37 PM com.google.cloud.sql.core.SslSocketFactory createAndConfigureSocket
+INFO: Connecting to Cloud SQL instance [poised-ceiling-182418:southamerica-east1:capitanes] on IP [35.199.93.0].
+Oct 13, 2017 2:06:38 PM org.hibernate.engine.jdbc.spi.SqlExceptionHelper logExceptions
+WARN: SQL Error: 1146, SQLState: 42S02
+Oct 13, 2017 2:06:38 PM org.hibernate.engine.jdbc.spi.SqlExceptionHelper logExceptions
+ERROR: Table &apos;rol276.Objeto&apos; doesn&apos;t exist
+</system-err>
+  </testcase>
+</testsuite>
