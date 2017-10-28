@@ -26,7 +26,7 @@ public class Objeto implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_objeto;
+    private long id_objeto;
 
     @Column(name = "NOMBRE", nullable = false)
     private String nombre;
@@ -45,11 +45,11 @@ public class Objeto implements Serializable {
     public Objeto() {
     }
 
-    public int getId_objeto() {
+    public long getId_objeto() {
         return id_objeto;
     }
 
-    public void setId_objeto(int id_objeto) {
+    public void setId_objeto(long id_objeto) {
         this.id_objeto = id_objeto;
     }
 

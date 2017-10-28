@@ -35,4 +35,12 @@ public class ObjetoServiceImpl implements ObjetoService{
 	public void updateObjeto(Objeto objeto){
 		dao.updateObjeto(objeto);
 	}
+
+    public void deleteObjetoById(long id) {
+        dao.deleteObjetoById(id);
+    }
+
+    public Objeto findById(long id) {
+        return dao.findById(id);
+    }
 }

@@ -30,10 +30,21 @@ public class ObjetoDaoImpl extends AbstractDao implements ObjetoDao{
 		query.executeUpdate();
 	}
 
+	public void deleteObjetoById(long id) {
+		Objeto o = findById(id);
+		getSession().delete(o);;
+	}
+
 	
 	public Objeto findByNombre(String nombre){
 		Criteria criteria = getSession().createCriteria(Objeto.class);
 		criteria.add(Restrictions.eq("nombre",nombre));
+		return (Objeto) criteria.uniqueResult();
+	}
+	
+	public Objeto findById(long id){
+		Criteria criteria = getSession().createCriteria(Objeto.class);
+		criteria.add(Restrictions.eq("id_objeto",id));
 		return (Objeto) criteria.uniqueResult();
 	}
 	

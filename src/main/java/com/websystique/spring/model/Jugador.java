@@ -16,6 +16,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -23,24 +24,28 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "Jugador")
+@XmlRootElement
 public class Jugador  implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id_jugador;
     
     @Column(nullable = false)
+    private String id_firebase;
+            
+    @Column(nullable = false)
     private int perfil;
     
     @Column(nullable = false)
     private String nombre;
     
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String nombre_usuario;
     
     @Column(nullable = false)
     private String password;
     
-    @Column(nullable = false)
+    @Column
     private Date cumple;
     
     @OneToOne(cascade={CascadeType.ALL}) 
@@ -71,6 +76,16 @@ public class Jugador  implements Serializable{
         this.id_jugador = id_jugador;
     }
 
+    public String getId_firebase() {
+        return id_firebase;
+    }
+
+    public void setId_firebase(String id_firebase) {
+        this.id_firebase = id_firebase;
+    }
+
+    
+    
     public String getNombre() {
         return nombre;
     }

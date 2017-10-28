@@ -30,6 +30,7 @@ import com.websystique.spring.service.MasterService;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.hibernate.Hibernate;
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
@@ -63,16 +64,31 @@ public class HibernateDao {
         return j;
     }
 
-    public static void crearJugador(Jugador py) {
+    public static Jugador obtenerJugadorPorId(long id) {
         AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         JugadorService service = (JugadorService) context.getBean("jugadorService");
+        Jugador j = service.findById(id);
+        context.close();
+        return j;
+    }
+
+    public static boolean crearJugador(Jugador py) {
+        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        JugadorService service = (JugadorService) context.getBean("jugadorService");
+        boolean succ = true;
+
+        
+
         try {
             service.saveJugador(py);
         } catch (Exception ex) {
+            succ = false;
             LOGGER.log(Level.SEVERE, " Error Guardando Jugador");
             LOGGER.log(Level.SEVERE, ex.toString());
         }
         context.close();
+        return succ;
+
     }
 
     public static Master obtenerMPorNombre(String name) {
@@ -185,7 +201,6 @@ public class HibernateDao {
         context.close();
     }
 
-    
     public static boolean CrearCampaignYAddAlMaster(Campaign c, Master m) {
         AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         CampaignService service_cam = (CampaignService) context.getBean("campaignService");
@@ -194,7 +209,7 @@ public class HibernateDao {
 
         Set<Campaign> cExistentes = m.getCampaigns();
         if (!cExistentes.contains(c)) {
-            service_cam.saveCampaign(c);            
+            service_cam.saveCampaign(c);
             m.getCampaigns().add(c);
             service_mas.updateMaster(m);
         } else {
@@ -230,7 +245,6 @@ public class HibernateDao {
 //    context.close();
 //    return c;
 //}
-    
     public static Campaign obtenerCampaignPorId(long id) {
 
         AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
@@ -242,15 +256,27 @@ public class HibernateDao {
         context.close();
         return c;
     }
-    
+
+    public static Objeto obtenerObjetoPorId(long id) {
+
+        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        ObjetoService service = (ObjetoService) context.getBean("objetoService");
+        Objeto o = service.findById(id);
+        //Hibernate.initialize(c.getJugadores());
+        //Hibernate.initialize(c.getMundo());
+        //Hibernate.initialize(c.getBonosExp());    
+        context.close();
+        return o;
+    }
+
     public static Personaje obtenerPersonajePorId(long id) {
         AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         PersonajeService service = (PersonajeService) context.getBean("personajeService");
-        Personaje p = service.findById(id);        
+        Personaje p = service.findById(id);
         context.close();
         return p;
     }
-    
+
 //    public static Object obtenerPorId(long id,Object o) {
 //
 //        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
@@ -259,10 +285,6 @@ public class HibernateDao {
 //        context.close();
 //        return or;
 //    }
-
-    
-    
-    
     public static Campaign obtenerCampaignPorNombre(String nombre) {
         AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         CampaignService service = (CampaignService) context.getBean("campaignService");
@@ -296,8 +318,8 @@ public class HibernateDao {
         context.close();
         return hss;
     }
-    
-    public static Set<BonoExp> todosLosBonosExpDeUnPj( Personaje pj) {
+
+    public static Set<BonoExp> todosLosBonosExpDeUnPj(Personaje pj) {
         AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         BonoExpService service = (BonoExpService) context.getBean("bonoExpService");
         Set<BonoExp> bes = null;
@@ -312,62 +334,61 @@ public class HibernateDao {
     }
 
     static void actualizarMaster(Master m) {
-        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);        
+        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         MasterService service_mas = (MasterService) context.getBean("masterService");
-        
+
         service_mas.updateMaster(m);
         context.close();
-        
+
     }
 
     static boolean borrarMasterPorId(long id) {
-         AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);        
+        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         MasterService service_mas = (MasterService) context.getBean("masterService");
         boolean succ = true;
-        try{
-        service_mas.deleteMasterById(id);
-        } catch (Exception ex){
-            LOGGER.log(Level.SEVERE, "Fallo borrando Master con id " + id );
+        try {
+            service_mas.deleteMasterById(id);
+        } catch (Exception ex) {
+            LOGGER.log(Level.SEVERE, "Fallo borrando Master con id " + id);
             succ = false;
         }
         return succ;
     }
+
     static void borrarMasterPorIdnotreturn(long id) {
-         AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);        
+        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         MasterService service_mas = (MasterService) context.getBean("masterService");
-                
+
         service_mas.deleteMasterById(id);
-        
-        
+
     }
 
     public static boolean crearBonoExp(BonoExp be) {
-        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);        
+        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         BonoExpService service = (BonoExpService) context.getBean("bonoExpService");
         boolean succ = true;
-        try{
-        service.saveBonoExp(be);
-        } catch (Exception ex){
-            LOGGER.log(Level.SEVERE, "Fallo creando bonoExp " + be );
+        try {
+            service.saveBonoExp(be);
+        } catch (Exception ex) {
+            LOGGER.log(Level.SEVERE, "Fallo creando bonoExp " + be);
             return false;
         }
-        LOGGER.log(Level.FINE, "Se ah creado bonoExp " + be.getId_bonoexp() );
+        LOGGER.log(Level.FINE, "Se ah creado bonoExp " + be.getId_bonoexp());
         return succ;
-        
-        
+
     }
-    
+
     public static boolean borrarBonoExp(BonoExp be) {
-        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);        
+        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         BonoExpService service = (BonoExpService) context.getBean("bonoExpService");
         boolean succ = true;
-        try{
-        service.deleteBonoExpById(be.getId_bonoexp());
-        } catch (Exception ex){
-            LOGGER.log(Level.SEVERE, "Fallo borrando bonoExp " + be );
+        try {
+            service.deleteBonoExpById(be.getId_bonoexp());
+        } catch (Exception ex) {
+            LOGGER.log(Level.SEVERE, "Fallo borrando bonoExp " + be);
             succ = false;
         }
         return succ;
     }
-        
+
 }

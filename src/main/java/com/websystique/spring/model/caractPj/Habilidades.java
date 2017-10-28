@@ -18,6 +18,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
@@ -27,6 +29,7 @@ import org.hibernate.annotations.LazyCollectionOption;
  */
 @Entity
 @Table(name = "Habilidades")
+@XmlRootElement
 public class Habilidades implements Serializable{
  
     @Id
@@ -160,6 +163,7 @@ public class Habilidades implements Serializable{
         this.habMagicas = habMagicas;
     }
 
+    @XmlTransient
     public List<Hab_secundaria_desarrollo> getHabSecundarias() {
         return habSecundarias;
     }
@@ -168,6 +172,7 @@ public class Habilidades implements Serializable{
         this.habSecundarias = habSecundarias;
     }
 
+    @XmlTransient
     public List<Idioma_desarrollo> getIdiomas() {
         return idiomas;
     }
@@ -226,7 +231,19 @@ public class Habilidades implements Serializable{
 
     @Override
     public String toString() {
-        return habArmadura + "\n" + habArmas + "\n" + habGenerales + "\n" + habSubterfugio + "\n" + habMagicas + "\n" + "habSecundarias=\n" + habSecundarias + "\n" + "idiomas=" + idiomas + "\n" + "desarrolloFisico=" + desarrolloFisico + "\n" + "percepcion=" + percepcion + "\n" + "puntosPoder=" + puntosPoder + "\n" + "liderazgoInfluencia=" + liderazgoInfluencia + "\n" + "bonificacionDefensiva=" + bonificacionDefensiva + "\n" + resistencias + '}';
+        return habArmadura + "\n" + 
+                habArmas + "\n" + 
+                habGenerales + "\n" + 
+                habSubterfugio + "\n" + 
+                habMagicas + "\n" + "habSecundarias=\n" + 
+                habSecundarias + "\n" + "idiomas=" + 
+                idiomas + "\n" + "desarrolloFisico=" + 
+                desarrolloFisico + "\n" + "percepcion=" + 
+                percepcion + "\n" + "puntosPoder=" + 
+                puntosPoder + "\n" + "liderazgoInfluencia=" + 
+                liderazgoInfluencia + "\n" + "bonificacionDefensiva=" + 
+                bonificacionDefensiva + "\n" + 
+                resistencias + '}';
     }
     
     

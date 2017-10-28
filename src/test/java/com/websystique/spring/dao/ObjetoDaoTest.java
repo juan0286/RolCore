@@ -206,25 +206,7 @@ public class ObjetoDaoTest {
         //fail("The test case is a prototype.");
     }
 
-    public class ObjetoDaoImpl implements ObjetoDao {
-
-        public void saveObjeto(Objeto objeto) {
-        }
-
-        public Set<Objeto> findAllObjetos() {
-            return null;
-        }
-
-        public void deleteObjetoByNombre(String ssn) {
-        }
-
-        public Objeto findByNombre(String ssn) {
-            return null;
-        }
-
-        public void updateObjeto(Objeto objeto) {
-        }
-    }
+    
 
     
     private void tenerObjetos (){

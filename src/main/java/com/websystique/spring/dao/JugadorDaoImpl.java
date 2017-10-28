@@ -3,31 +3,63 @@ package com.websystique.spring.dao;
 import java.util.Set;
 
 import org.hibernate.Criteria;
-import org.hibernate.Query;
+
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import com.websystique.spring.model.Jugador;
-import com.websystique.spring.model.caractPj.Hab_secundaria;
 import java.util.HashSet;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.hibernate.exception.ConstraintViolationException;
 
 @Repository("jugadorDao")
 public class JugadorDaoImpl extends AbstractDao implements JugadorDao {
 
+    private static final Logger LOGGER = Logger.getLogger(JugadorDaoImpl.class.getName());
     public void saveJugador(Jugador jugador) {
-        persist(jugador);
+        try {
+            persist(jugador);
+        } catch (ConstraintViolationException cve) {
+            try {
+                if (getSession().getTransaction().isActive()) {
+                    getSession().getTransaction().rollback();
+                }
+            } catch (Exception exc) {
+                LOGGER.log(Level.WARNING, "Falló al hacer un rollback", exc);
+            }
+
+        } catch (RuntimeException ex) {
+            try {
+                if (getSession().getTransaction().isActive()) {
+                    getSession().getTransaction().rollback();
+                }
+            } catch (Exception exc) {
+                LOGGER.log(Level.WARNING, "Falló al hacer un rollback", exc);
+            }
+            throw ex;
+        } catch (Exception ex) {
+            try {
+                if (getSession().getTransaction().isActive()) {
+                    getSession().getTransaction().rollback();
+                }
+            } catch (Exception exc) {
+                LOGGER.log(Level.WARNING, "Falló al hacer un rollback", exc);
+            }
+            throw new RuntimeException(ex);
+        }
+
     }
 
     @SuppressWarnings("unchecked")
     public Set<Jugador> findAllJugadors() {
         Criteria criteria = getSession().createCriteria(Jugador.class);
-        return  new HashSet<Jugador>(criteria.list());
+        return new HashSet<Jugador>(criteria.list());
     }
 
     public void deleteJugadorById(long id) {
-        Query query = getSession().createSQLQuery("delete from Jugador where id_jugador = :id");
-        query.setLong("id_jugador", id);
-        query.executeUpdate();
+        Jugador j = findById(id);
+        getSession().delete(j);
     }
 
     public Jugador findById(long id) {

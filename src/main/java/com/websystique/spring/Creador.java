@@ -94,6 +94,7 @@ public class Creador {
         hector.setPerfil(Jugador.PERFIL_JUGADOR);        
         hector.setNombre_usuario("capitanneo");
         hector.setPassword("porfilip");
+        hector.setId_firebase("id de prueba");
         hector.setCumple(new Date(1985, 11, 5));       
         
         

@@ -11,8 +11,12 @@ public interface ObjetoDao {
 	Set<Objeto> findAllObjetos();
 	
 	void deleteObjetoByNombre(String nombre);
+        
+	void deleteObjetoById(long id);
 	
 	Objeto findByNombre(String nombre);
+        
+	Objeto findById(long id);
 	
 	void updateObjeto(Objeto objeto);
 }

@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -19,6 +20,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "Idioma")
+@XmlRootElement
 public class Idioma implements Serializable {
     
     @Id
@@ -82,6 +84,8 @@ public class Idioma implements Serializable {
         this.descripcion = descripcion;
     }
 
+    
+    
     @Override
     public String toString() {
         return "\nnombre=" + nombre + "\n descripcion=" + descripcion;

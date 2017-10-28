@@ -21,6 +21,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
@@ -30,12 +31,13 @@ import org.hibernate.annotations.LazyCollectionOption;
  */
 @Entity
 @Table(name = "Personaje")
+@XmlRootElement
 public class Personaje implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id_pj;
-    
+    private long id_pj;    
+
     @Column(nullable = false)
     private String nombre;
     
@@ -256,6 +258,17 @@ public class Personaje implements Serializable{
     public void setCaracteristicas(Caracteristicas caracteristicas) {
         this.caracteristicas = caracteristicas;
     }
+  
+
+    public List<BonoExp> getBonosExp() {
+        return bonosExp;
+    }
+
+    public void setBonosExp(List<BonoExp> bonosExp) {
+        this.bonosExp = bonosExp;
+    }
+    
+    
 
     @Override
     public int hashCode() {
@@ -283,7 +296,22 @@ public class Personaje implements Serializable{
 
     @Override
     public String toString() {
-        return "Personaje{" + "id_pj=" + id_pj + "\n" + "nombre=" + nombre + "\n" + "exp=" + exp + "\n" + "nivel=" + nivel + "\n" + "raza=" + raza + "\n" + "altura=" + altura + "\n" + "peso=" + peso + "\n" + "genero=" + genero + "\n" + "edad=" + edad + "\n" + "motivacion=" + motivacion + "\n" + "alineamiento=" + alineamiento + "\n" + "estado_civico=" + estado_civico + "\n" + "familia=" + familia + "\n" + "diosesAdorados=" + diosesAdorados + "\n" + "religion=" + religion + "\n" + "caracteristicas=" + caracteristicas + "\n" + "habilidades=" + habilidades ;
+        return "Personaje{" + "id_pj=" + id_pj + "\n" + "nombre=" + nombre + "\n" +
+                "exp=" + exp + "\n" + 
+                "nivel=" + nivel + "\n" + 
+                "raza=" + raza + "\n" + 
+                "altura=" + altura + "\n" + 
+                "peso=" + peso + "\n" + 
+                "genero=" + genero + "\n" + 
+                "edad=" + edad + "\n" + 
+                "motivacion=" + motivacion + "\n" + 
+                "alineamiento=" + alineamiento + "\n" + 
+                "estado_civico=" + estado_civico + "\n" + 
+                "familia=" + familia + "\n" + 
+                "diosesAdorados=" + diosesAdorados + "\n" + 
+                "religion=" + religion + "\n" + 
+                "caracteristicas=" + caracteristicas + "\n" + 
+                "habilidades=" + habilidades ;
     }
 
     

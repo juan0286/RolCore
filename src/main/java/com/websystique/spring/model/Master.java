@@ -37,7 +37,7 @@ public class Master implements Serializable{
     @Column(nullable = false)
     private String nombre;
     
-    @Column(nullable = false)
+    @Column(nullable = false,unique = true)
     private String usuario;
     
     @Column(nullable = false)
