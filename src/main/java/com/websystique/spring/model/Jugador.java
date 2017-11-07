@@ -8,12 +8,16 @@ package com.websystique.spring.model;
 import com.websystique.spring.model.Personaje;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -26,6 +30,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "Jugador")
 @XmlRootElement
 public class Jugador  implements Serializable{
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id_jugador;
@@ -52,6 +57,11 @@ public class Jugador  implements Serializable{
     private Personaje pj;
     // private set<Mesanje> mensajes;
 
+    @Column(unique = true)
+    @OneToMany( fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.REFRESH})
+    private Set<CampaignAccessRequest> cARequests;
+    
+    
     public Jugador() {
     }
     
@@ -142,6 +152,20 @@ public class Jugador  implements Serializable{
             return false;
         }
         return true;
+    }
+
+    public Set<CampaignAccessRequest> getCampaigns() {
+        return cARequests;
+    }
+
+    public void setCampaigns(Set<CampaignAccessRequest> cARequest) {
+        this.cARequests = cARequest;
+    }    
+    
+    public void addcARequest(CampaignAccessRequest cARequest){
+        if (this.cARequests != null){
+            this.cARequests.add(cARequest);
+        }
     }
     
     @Override

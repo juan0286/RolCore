@@ -84,4 +84,10 @@ public class JugadorDaoImpl extends AbstractDao implements JugadorDao {
         return (Jugador) criteria.uniqueResult();
     }
 
+    public Jugador findByIdFirebase(String id) {
+        Criteria criteria = getSession().createCriteria(Jugador.class);
+        criteria.add(Restrictions.eq("id_firebase", id));
+        return (Jugador) criteria.uniqueResult();
+    }
+
 }

@@ -15,6 +15,8 @@ public interface JugadorDao {
 	
 	Jugador findById(long id);
         
+	Jugador findByIdFirebase(String id);
+        
 	Jugador findByName(String name);
         
 	Jugador findByUser(String user);

@@ -22,37 +22,33 @@ import org.springframework.core.env.Environment;
 
 public class AppMain {
 
-    
-
     public static void main(String args[]) {
         AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 
         TipoObjetoService t_obj_service = (TipoObjetoService) context.getBean("tipoObjetoService");
         JugadorService js = (JugadorService) context.getBean("jugadorService");
         PersonajeService ps = (PersonajeService) context.getBean("personajeService");
-        
-        
+
         Creador.crearElRol();
-        
 
         // probar si se guardo correctamente
         long l = 1l;
         Jugador jug = js.findById(l);
+        if (jug != null) {
+            BonoExp be = new BonoExp();
+            be.setPj(jug.getPj());
+            be.setAplicado(true);
+            be.setBono(100);
+            be.setMotivo("Pruebas Dos");
+            java.util.Date fecha = new Date();
+            be.setFecha(fecha);
+            HibernateDao.darBonoExp(be);
 
-        BonoExp be = new BonoExp();
-        be.setPj(jug.getPj());
-        be.setAplicado(true);
-        be.setBono(100);
-        be.setMotivo("Pruebas Dos");
-        java.util.Date fecha = new Date();
-        be.setFecha(fecha);
-        HibernateDao.darBonoExp(be);
+            System.out.println("****   Jugador Creado   *****");
+            System.out.println(jug);
+        }
 
-        
-        jug = js.findById(l);
-        System.out.println("****   Jugador Creado   *****");
-        System.out.println(jug);
-
+        //jug = js.findById(l);
 //        long l = 1l;
 //        Personaje pje = ps.findById(l);
 //        System.out.println("****   Personaje Creado   *****");

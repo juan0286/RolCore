@@ -13,6 +13,8 @@ public interface JugadorService {
 	void deleteJugadorById(long id);
 
 	Jugador findById(long id);
+        
+	Jugador findByIdFirebase(String id);
 
         Jugador findByName(String name);
 	

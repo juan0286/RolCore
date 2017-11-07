@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.websystique.spring.dao.CampaignDao;
 import com.websystique.spring.model.Campaign;
+import com.websystique.spring.model.Master;
 
 @Service("campaignService")
 @Transactional
@@ -42,5 +43,17 @@ public class CampaignServiceImpl implements CampaignService {
 
     public Campaign findByName(String name) {
         return dao.findByName(name);
+    }
+
+    public Set<Campaign> findAllCampaignsNombre(String nombre) {
+        return dao.findAllCampaignsNombre(nombre);
+    }
+
+    public Set<Campaign> findAllCampaignsMaster(Master m) {
+        return dao.findAllCampaignsMaster(m);
+    }
+
+    public Set<Campaign> findAllNewCampaignsPorMaster(String param, long id_j, CampaignDao.TypeSearch tipo) {
+        return dao.findAllNewCampaignsPorMaster(param, id_j, tipo);
     }
 }

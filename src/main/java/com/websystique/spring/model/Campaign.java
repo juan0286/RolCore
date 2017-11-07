@@ -15,6 +15,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -26,30 +27,31 @@ import org.hibernate.annotations.LazyCollectionOption;
  *
  * @author TiranoJuan
  */
-
 @Entity
 @Table(name = "Campaign")
 public class Campaign implements Serializable {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id_campaign;
-    
+
     @Column(nullable = false)
-    private String nombre;   
-    
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH)    
+    private String nombre;
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
     @LazyCollection(LazyCollectionOption.FALSE)
     private Set<Jugador> jugadores;
-    
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Master master;
+
     @OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private Mundo mundo;
-    
-//    @ManyToOne(cascade = CascadeType.ALL)
-//    private Master master;        
-    
-//    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
-//    private Set<BonoExp> bonosExp;
+
+    @Column(unique = true)
+    @ManyToMany(fetch = FetchType.LAZY,cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.REFRESH})
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private Set<CampaignAccessRequest> cars;
 
     public Campaign() {
     }
@@ -66,10 +68,10 @@ public class Campaign implements Serializable {
         return jugadores;
     }
 
-    public void addJugador(Jugador j){
+    public void addJugador(Jugador j) {
         jugadores.add(j);
     }
-    
+
     public void setJugadores(Set<Jugador> jugadores) {
         this.jugadores = jugadores;
     }
@@ -90,30 +92,21 @@ public class Campaign implements Serializable {
         this.id_campaign = id_campaign;
     }
 
-    
-    
-    
-//    public Set<BonoExp> getBonosExp() {
-//        return bonosExp;
-//    }
-//
-//    public void setBonosExp(Set<BonoExp> bonosExp) {
-//        this.bonosExp = bonosExp;
-//    }
+    public Master getMaster() {
+        return master;
+    }
 
-//    public void addBonoExp(BonoExp be){
-//        bonosExp.add(be);
-//    }
-   
-//    public Master getMaster() {
-//        return master;
-//    }
-//
-//    public void setMaster(Master master) {
-//        this.master = master;
-//    }
+    public void setMaster(Master master) {
+        this.master = master;
+    }
 
-        
+    
+    
+    public void addCar(CampaignAccessRequest car){
+        if (cars != null){
+            cars.add(car);
+        }
+    }
 
     @Override
     public int hashCode() {
@@ -139,6 +132,4 @@ public class Campaign implements Serializable {
         return true;
     }
 
-    
 }
-

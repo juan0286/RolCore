@@ -43,4 +43,8 @@ public class JugadorServiceImpl implements JugadorService {
     public Jugador findByUser(String user) {
         return dao.findByName(user);
     }
+
+    public Jugador findByIdFirebase(String id) {
+        return dao.findByIdFirebase(id);
+    }
 }

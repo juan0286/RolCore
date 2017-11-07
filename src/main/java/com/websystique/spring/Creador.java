@@ -335,7 +335,7 @@ public class Creador {
         h1.setModificador(Hab_secundaria.MOD_I);
         h1.setDescripcion("Se usa para encontrar cualquier fuente cercana de agua potable, hierbas o plantas, o animales comestibles");
         h1.setTipo(Hab_secundaria.TIPO_ME);
-        HibernateDao.CrearHabSecundaria(h1);
+        HibernateDao.crearHabSecundaria(h1);
 
         
         Hab_secundaria h2 = new Hab_secundaria();       
@@ -343,35 +343,35 @@ public class Creador {
         h2.setModificador(Hab_secundaria.MOD_XXX);
         h2.setDescripcion("Ante una situacion que enfurece desmedidamente al usuario, éste puede entrar en colera atacando con +50 bo y el doble de puntos de daño, solo cubriendose con la mitad de su bo. Con una tirada de ésta habilidad puede salir de dicho estado");
         h2.setTipo(Hab_secundaria.TIPO_PE);
-        HibernateDao.CrearHabSecundaria(h2);
+        HibernateDao.crearHabSecundaria(h2);
         
         Hab_secundaria h3 = new Hab_secundaria();       
         h3.setNombre("Frenezi");
         h3.setModificador(Hab_secundaria.MOD_XXX);
         h3.setDescripcion("Ante una situacion que enfurece desmedidamente al usuario, éste puede entrar en colera atacando con +50 bo y el doble de puntos de daño, solo cubriendose con la mitad de su bo. Con una tirada de ésta habilidad puede salir de dicho estado, mientras se encuentre en el mismo seguira atacando a quien sea, incluso aliados.");
         h3.setTipo(Hab_secundaria.TIPO_PE);
-        HibernateDao.CrearHabSecundaria(h3);
+        HibernateDao.crearHabSecundaria(h3);
         
         Hab_secundaria h4 = new Hab_secundaria();       
         h4.setNombre("Jugar");
         h4.setModificador(Hab_secundaria.MOD_I);
         h4.setDescripcion("Conocimiento en juegos de mesa o salon y bono extra jugando cualquier tipo de juego que se encuentre en esta categoria.");
         h4.setTipo(Hab_secundaria.TIPO_ME);
-        HibernateDao.CrearHabSecundaria(h4);
+        HibernateDao.crearHabSecundaria(h4);
 
         Hab_secundaria h5 = new Hab_secundaria();       
         h5.setNombre("Mitos y Leyendas");
         h5.setModificador(Hab_secundaria.MOD_XXX);
         h5.setDescripcion("Conocimiento Monstruos y leyendas de conocimiento popular.");
         h5.setTipo(Hab_secundaria.TIPO_PE);
-        HibernateDao.CrearHabSecundaria(h5);
+        HibernateDao.crearHabSecundaria(h5);
         
         Hab_secundaria h6 = new Hab_secundaria();       
         h6.setNombre("Magia con Armadura");
         h6.setModificador(Hab_secundaria.MOD_XXX);
         h6.setDescripcion("Habilidad única de paladines, para utilizar magias con una armadura metalica puesta");
         h6.setTipo(Hab_secundaria.TIPO_PE);
-        HibernateDao.CrearHabSecundaria(h6);
+        HibernateDao.crearHabSecundaria(h6);
 
         
         Hab_secundaria h7 = new Hab_secundaria();       
@@ -379,7 +379,7 @@ public class Creador {
         h7.setModificador(Hab_secundaria.MOD_INTE);
         h7.setDescripcion("Permite tazar el precio o valor de objetos, y tazar objetos.");
         h7.setTipo(Hab_secundaria.TIPO_ME);
-        HibernateDao.CrearHabSecundaria(h7);
+        HibernateDao.crearHabSecundaria(h7);
 
         
         Hab_secundaria h8 = new Hab_secundaria();       
@@ -387,7 +387,7 @@ public class Creador {
         h8.setModificador(Hab_secundaria.MOD_INTE);
         h8.setDescripcion("Capacidad de comnicar ideas .");
         h8.setTipo(Hab_secundaria.TIPO_ME);
-        HibernateDao.CrearHabSecundaria(h8);
+        HibernateDao.crearHabSecundaria(h8);
 
         
         Hab_secundaria h9 = new Hab_secundaria();       
@@ -395,7 +395,7 @@ public class Creador {
         h9.setModificador(Hab_secundaria.MOD_INTE);
         h9.setDescripcion("Permite tazar el precio o valor de objetos, y tazar objetos.");
         h9.setTipo(Hab_secundaria.TIPO_ME);
-        HibernateDao.CrearHabSecundaria(h9);
+        HibernateDao.crearHabSecundaria(h9);
 
         
         Hab_secundaria h10 = new Hab_secundaria();       
@@ -403,14 +403,14 @@ public class Creador {
         h10.setModificador(Hab_secundaria.MOD_FUE);
         h10.setDescripcion("BO de habilidad de dos espadas al mismo tiempo.");
         h10.setTipo(Hab_secundaria.TIPO_BO);
-        HibernateDao.CrearHabSecundaria(h10);
+        HibernateDao.crearHabSecundaria(h10);
         
         Hab_secundaria h11 = new Hab_secundaria();       
         h11.setNombre("Modo Arcano");
         h11.setModificador(Hab_secundaria.MOD_XXX);
         h11.setDescripcion("Habilidad para convertirse en un Guerrero Arcano");
         h11.setTipo(Hab_secundaria.TIPO_PE);
-        HibernateDao.CrearHabSecundaria(h11);
+        HibernateDao.crearHabSecundaria(h11);
 
         
 

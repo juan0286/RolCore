@@ -6,8 +6,10 @@
 package com.websystique.spring;
 
 import com.websystique.spring.configuration.AppConfig;
+import com.websystique.spring.dao.CampaignDao;
 import com.websystique.spring.model.BonoExp;
 import com.websystique.spring.model.Campaign;
+import com.websystique.spring.model.CampaignAccessRequest;
 import com.websystique.spring.model.Jugador;
 import com.websystique.spring.model.Master;
 import com.websystique.spring.model.Objeto;
@@ -16,6 +18,7 @@ import com.websystique.spring.model.TipoObjeto;
 import com.websystique.spring.model.caractPj.Hab_secundaria;
 import com.websystique.spring.model.caractPj.Idioma;
 import com.websystique.spring.service.BonoExpService;
+import com.websystique.spring.service.CampaignAccessRequestService;
 import com.websystique.spring.service.CampaignService;
 import com.websystique.spring.service.IdiomaService;
 import com.websystique.spring.service.JugadorService;
@@ -71,6 +74,14 @@ public class HibernateDao {
         context.close();
         return j;
     }
+    
+    public static Jugador obtenerJugadorPorIdFirebase(String idFirebase) {
+        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        JugadorService service = (JugadorService) context.getBean("jugadorService");
+        Jugador j = service.findByIdFirebase(idFirebase);
+        context.close();
+        return j;
+    }
 
     public static boolean crearJugador(Jugador py) {
         AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
@@ -84,7 +95,7 @@ public class HibernateDao {
         } catch (Exception ex) {
             succ = false;
             LOGGER.log(Level.SEVERE, " Error Guardando Jugador");
-            LOGGER.log(Level.SEVERE, ex.toString());
+            LOGGER.log(Level.SEVERE, ex.toString(), ex);
         }
         context.close();
         return succ;
@@ -122,7 +133,31 @@ public class HibernateDao {
             service.saveMaster(py);
         } catch (Exception ex) {
             LOGGER.log(Level.SEVERE, " Error Guardando Master");
-            LOGGER.log(Level.SEVERE, ex.toString());
+            LOGGER.log(Level.SEVERE, ex.toString(), ex);
+        }
+        context.close();
+    }
+    
+    public static void crearCar(CampaignAccessRequest car) {
+        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        CampaignAccessRequestService service = (CampaignAccessRequestService) context.getBean("campaignAccessRequestService");
+        try {
+            service.saveCampaignAccessRequest(car);
+        } catch (Exception ex) {
+            LOGGER.log(Level.SEVERE, " Error Guardando car");
+            LOGGER.log(Level.SEVERE, ex.toString(), ex);
+        }
+        context.close();
+    }
+
+    public static void crearCar(CampaignAccessRequest car, long id_j, long id_c) {
+        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        CampaignAccessRequestService service = (CampaignAccessRequestService) context.getBean("campaignAccessRequestService");
+        try {
+            service.saveCampaignAccessRequest(car, id_j, id_c);
+        } catch (Exception ex) {
+            LOGGER.log(Level.SEVERE, " Error Guardando car");
+            LOGGER.log(Level.SEVERE, ex.toString(), ex);
         }
         context.close();
     }
@@ -134,7 +169,7 @@ public class HibernateDao {
             service.saveTipoObjeto(to);
         } catch (Exception ex) {
             LOGGER.log(Level.SEVERE, " Error Guardando Tipo de Objeto");
-            LOGGER.log(Level.SEVERE, ex.toString());
+            LOGGER.log(Level.SEVERE, ex.toString(), ex);
         }
         context.close();
     }
@@ -146,7 +181,7 @@ public class HibernateDao {
             service.saveObjeto(o);
         } catch (Exception ex) {
             LOGGER.log(Level.SEVERE, " Error Guardando Objeto " + o.getNombre());
-            LOGGER.log(Level.SEVERE, ex.toString());
+            LOGGER.log(Level.SEVERE, ex.toString(), ex);
         }
         context.close();
     }
@@ -158,7 +193,7 @@ public class HibernateDao {
             service.saveBonoExp(be);
         } catch (Exception ex) {
             LOGGER.log(Level.SEVERE, " Error Bonificando experiencia ");
-            LOGGER.log(Level.SEVERE, ex.toString());
+            LOGGER.log(Level.SEVERE, ex.toString(), ex);
         }
         context.close();
     }
@@ -170,7 +205,7 @@ public class HibernateDao {
             service.saveIdioma(i);
         } catch (Exception ex) {
             LOGGER.log(Level.SEVERE, " Error Guardando Idioma " + i.getNombre());
-            LOGGER.log(Level.SEVERE, ex.toString());
+            LOGGER.log(Level.SEVERE, ex.toString(), ex);
         }
         context.close();
     }
@@ -183,25 +218,25 @@ public class HibernateDao {
             idiomas = service.findAllIdiomas();
         } catch (Exception ex) {
             LOGGER.log(Level.SEVERE, " Error obteniendo todos los Idiomas ");
-            LOGGER.log(Level.SEVERE, ex.toString());
+            LOGGER.log(Level.SEVERE, ex.toString(), ex);
         }
         context.close();
         return idiomas;
     }
 
-    public static void CrearHabSecundaria(Hab_secundaria hs) {
+    public static void crearHabSecundaria(Hab_secundaria hs) {
         AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         Hab_secundariaService service = (Hab_secundariaService) context.getBean("hab_secundariaService");
         try {
             service.saveHab_secundaria(hs);
         } catch (Exception ex) {
             LOGGER.log(Level.SEVERE, " Error Guardando Habilidad Secundaria " + hs.getNombre());
-            LOGGER.log(Level.SEVERE, ex.toString());
+            LOGGER.log(Level.SEVERE, ex.toString(), ex);
         }
         context.close();
     }
 
-    public static boolean CrearCampaignYAddAlMaster(Campaign c, Master m) {
+    public static boolean crearCampaignYAddAlMaster(Campaign c, Master m) {
         AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         CampaignService service_cam = (CampaignService) context.getBean("campaignService");
         MasterService service_mas = (MasterService) context.getBean("masterService");
@@ -209,6 +244,7 @@ public class HibernateDao {
 
         Set<Campaign> cExistentes = m.getCampaigns();
         if (!cExistentes.contains(c)) {
+            c.setMaster(m);
             service_cam.saveCampaign(c);
             m.getCampaigns().add(c);
             service_mas.updateMaster(m);
@@ -220,7 +256,7 @@ public class HibernateDao {
         return succ;
     }
 
-    public static boolean CrearCampaign(Campaign c) {
+    public static boolean crearCampaign(Campaign c) {
         AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         CampaignService service_cam = (CampaignService) context.getBean("campaignService");
         MasterService service_mas = (MasterService) context.getBean("masterService");
@@ -232,7 +268,7 @@ public class HibernateDao {
         } catch (Exception ex) {
             succ = false;
             LOGGER.log(Level.SEVERE, " Error Guardando la campaña " + c.getNombre());
-            LOGGER.log(Level.SEVERE, ex.toString());
+            LOGGER.log(Level.SEVERE, ex.toString(), ex);
         }
         context.close();
         return succ;
@@ -295,6 +331,33 @@ public class HibernateDao {
         return c;
     }
 
+    public static void actualizarCampaign(Campaign c) {
+        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        CampaignService service = (CampaignService) context.getBean("campaignService");
+        service.updateCampaign(c);
+        context.close();        
+    }
+    
+    public static void actualizarJugador(Jugador j) {
+        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        JugadorService service = (JugadorService) context.getBean("jugadorService");
+        service.updateJugador(j);
+        context.close();        
+    }
+    
+    public static void borrarCampaignAccessRequest(Jugador j) {
+        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        JugadorService service = (JugadorService) context.getBean("jugadorService");
+        service.updateJugador(j);
+        context.close();        
+    }
+    public static void borrarCampaignAccessRequest(long id_car) {
+        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        CampaignAccessRequestService service = (CampaignAccessRequestService) context.getBean("campaignAccessRequest");
+        service.deleteCampaignAccessRequestById(id_car);
+        context.close();        
+    }
+
     public static boolean borrarCampaignPorId(long id) {
         AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         CampaignService service = (CampaignService) context.getBean("campaignService");
@@ -313,7 +376,50 @@ public class HibernateDao {
             hss = service.findAllHab_secundarias();
         } catch (Exception ex) {
             LOGGER.log(Level.SEVERE, " Error obteniendo todas las habilidades secundarias ");
-            LOGGER.log(Level.SEVERE, ex.toString());
+            LOGGER.log(Level.SEVERE, ex.toString(), ex);
+        }
+        context.close();
+        return hss;
+    }
+    
+    public static Set<Campaign> todosLasCampaignsXNombre(String nombre) {
+        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        CampaignService service = (CampaignService) context.getBean("campaignService");
+        Set<Campaign> hss = null;
+        try {
+            hss = service.findAllCampaignsNombre(nombre);
+        } catch (Exception ex) {
+            LOGGER.log(Level.SEVERE, " Error obteniendo todas las campañas de nombre " + nombre);
+            LOGGER.log(Level.SEVERE, ex.toString(), ex);
+        }
+        context.close();
+        return hss;
+    }
+    
+    public static Set<Campaign> todosLasCampaignsXMaster(Master m) {
+        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        CampaignService service = (CampaignService) context.getBean("campaignService");
+        Set<Campaign> hss = null;
+        try {
+            hss = service.findAllCampaignsMaster(m);
+        } catch (Exception ex) {
+            LOGGER.log(Level.SEVERE, " Error obteniendo todas las campañas del master " + m.toString());
+            LOGGER.log(Level.SEVERE, ex.toString(), ex);
+        }
+        context.close();
+        return hss;
+    }
+    
+    public static Set<Campaign> todosLasCampaignsNuevasXMaster(String param,long id_j,CampaignDao.TypeSearch tipo) {
+        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        CampaignService service = (CampaignService) context.getBean("campaignService");
+        Set<Campaign> hss = null;
+        try {
+            hss = service.findAllNewCampaignsPorMaster(param,id_j,tipo);
+        } catch (Exception ex) {
+            LOGGER.log(Level.SEVERE, " Error obteniendo todas las campañas buscadas. PARAM =" + param);
+            LOGGER.log(Level.SEVERE, ex.toString(), ex);
+            
         }
         context.close();
         return hss;
@@ -327,7 +433,35 @@ public class HibernateDao {
             bes = service.findAllBonoExpsForPj(pj);
         } catch (Exception ex) {
             LOGGER.log(Level.SEVERE, " Error obteniendo todos los Bonos de Exp. de " + pj.getNombre());
-            LOGGER.log(Level.SEVERE, ex.toString());
+            LOGGER.log(Level.SEVERE, ex.toString(), ex);
+        }
+        context.close();
+        return bes;
+    }
+
+    public static Set<CampaignAccessRequest> todosLosCarDeUnaCampaign(Campaign c) {
+        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        CampaignAccessRequestService service = (CampaignAccessRequestService) context.getBean("campaignAccessRequestService");
+        Set<CampaignAccessRequest> bes = null;
+        try {
+            bes = service.findAllCampaignAccessRequestsFromCampaign(c);
+        } catch (Exception ex) {
+            LOGGER.log(Level.SEVERE, " Error obteniendo todos los Car de " + c.getNombre() + " - " + c.getId_campaign());
+            LOGGER.log(Level.SEVERE, ex.toString(), ex);
+        }
+        context.close();
+        return bes;
+    }
+
+    public static Set<CampaignAccessRequest> todosLosCarDeUnJugador(Jugador j) {
+        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        CampaignAccessRequestService service = (CampaignAccessRequestService) context.getBean("campaignAccessRequestService");
+        Set<CampaignAccessRequest> bes = null;
+        try {
+            bes = service.findAllCampaignAccessRequestsFromPlayer(j);
+        } catch (Exception ex) {
+            LOGGER.log(Level.SEVERE, " Error obteniendo todos los Car de " + j.getNombre() + " - " + j.getId_jugador());
+            LOGGER.log(Level.SEVERE, ex.toString(), ex);
         }
         context.close();
         return bes;
@@ -354,8 +488,21 @@ public class HibernateDao {
         }
         return succ;
     }
+    
+    static boolean borrarCarPorId(long id) {
+        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        CampaignAccessRequestService service_mas = (CampaignAccessRequestService) context.getBean("campaignAccessRequestService");
+        boolean succ = true;
+        try {
+            service_mas.deleteCampaignAccessRequestById(id);
+        } catch (Exception ex) {
+            LOGGER.log(Level.SEVERE, "Fallo borrando car con id " + id);
+            succ = false;
+        }
+        return succ;
+    }
 
-    static void borrarMasterPorIdnotreturn(long id) {
+    static void borrarMasterPorIdNotReturn(long id) {
         AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         MasterService service_mas = (MasterService) context.getBean("masterService");
 

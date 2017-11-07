@@ -5,6 +5,7 @@
  */
 package com.websystique.spring;
 
+import com.websystique.spring.configuration.InicializadorDetachedDao;
 import com.websystique.spring.model.BonoExp;
 import com.websystique.spring.model.Campaign;
 import com.websystique.spring.model.Jugador;
@@ -15,9 +16,12 @@ import com.websystique.spring.model.Personaje;
 import com.websystique.spring.model.TipoObjeto;
 import com.websystique.spring.model.caractPj.Hab_secundaria;
 import com.websystique.spring.model.caractPj.Idioma;
+
+
 import java.util.Date;
 import java.util.Set;
 import javax.transaction.Transactional;
+import org.hibernate.Hibernate;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -65,14 +69,14 @@ public class HibernateDaoTest {
         m.setUsuario("mm");
         HibernateDao.crearMaster(m);
 //        boolean result = HibernateDao.borrarMasterPorId(m.getId_master());
-        HibernateDao.borrarMasterPorIdnotreturn(m.getId_master());
+        HibernateDao.borrarMasterPorIdNotReturn(m.getId_master());
         //assertTrue(result);
         // TODO review the generated test code and remove the default call to fail.
 //        
     }
 
     /**
-     * Test of CrearCampaignYAddAlMaster method, of class HibernateDao.
+     * Test of crearCampaignYAddAlMaster method, of class HibernateDao.
      */
     @Test    
     public void testCrearCampaignYAddAlMaster() {
@@ -112,15 +116,23 @@ public class HibernateDaoTest {
             //cReturn = m.getCampaigns().get(idABorrar);
         }
         
-        boolean result = HibernateDao.CrearCampaignYAddAlMaster(c, m);
+        boolean result = HibernateDao.crearCampaignYAddAlMaster(c, m);
         //assertEquals(expResult, result);
         
         cReturn = HibernateDao.obtenerCampaignPorId(c.getId_campaign());
+        
+        //InicializadorDetachedDao id = new InicializadorDetachedDao();
+        //id.inicializaar(cReturn);
+        
         assertNotNull(cReturn);
         
         System.out.println("Campaña bien guardada: " + cReturn.getNombre());
+        
+        
+        //Hibernate.initialize(cReturn.getMundo());
         Mundo mRet = cReturn.getMundo();        
         assertNotNull(mRet);
+        
         
         System.out.println("Mundo " + mRet.getNombre());
         
@@ -291,26 +303,26 @@ public class HibernateDaoTest {
     }
 
     /**
-     * Test of CrearHabSecundaria method, of class HibernateDao.
+     * Test of crearHabSecundaria method, of class HibernateDao.
      */
     @Test
     public void testCrearHabSecundaria() {
         System.out.println("CrearHabSecundaria");
         Hab_secundaria hs = null;
-//        HibernateDao.CrearHabSecundaria(hs);
+//        HibernateDao.crearHabSecundaria(hs);
         // TODO review the generated test code and remove the default call to fail.
         
     }
 
     /**
-     * Test of CrearCampaign method, of class HibernateDao.
+     * Test of crearCampaign method, of class HibernateDao.
      */
     @Test
     public void testCrearCampaign() {
         System.out.println("CrearCampaign");
         Campaign c = null;
         boolean expResult = false;
-//        boolean result = HibernateDao.CrearCampaign(c);
+//        boolean result = HibernateDao.crearCampaign(c);
 //        assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         
@@ -426,13 +438,13 @@ public class HibernateDaoTest {
     }
 
     /**
-     * Test of borrarMasterPorIdnotreturn method, of class HibernateDao.
+     * Test of borrarMasterPorIdNotReturn method, of class HibernateDao.
      */
     @Test
     public void testBorrarMasterPorIdnotreturn() {
         System.out.println("borrarMasterPorIdnotreturn");
         long id = 0L;
-        //HibernateDao.borrarMasterPorIdnotreturn(id);
+        //HibernateDao.borrarMasterPorIdNotReturn(id);
         // TODO review the generated test code and remove the default call to fail.
         
     }
