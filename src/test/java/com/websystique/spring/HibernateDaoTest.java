@@ -6,14 +6,14 @@
 package com.websystique.spring;
 
 import com.websystique.spring.configuration.InicializadorDetachedDao;
-import com.websystique.spring.model.BonoExp;
+import com.websystique.spring.model.bono.BonoExp;
 import com.websystique.spring.model.Campaign;
 import com.websystique.spring.model.Jugador;
 import com.websystique.spring.model.Master;
 import com.websystique.spring.model.Mundo;
-import com.websystique.spring.model.Objeto;
+import com.websystique.spring.model.objetos.Objeto;
 import com.websystique.spring.model.Personaje;
-import com.websystique.spring.model.TipoObjeto;
+import com.websystique.spring.model.objetos.TipoObjeto;
 import com.websystique.spring.model.caractPj.Hab_secundaria;
 import com.websystique.spring.model.caractPj.Idioma;
 

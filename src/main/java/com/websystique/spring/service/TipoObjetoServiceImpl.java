@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.websystique.spring.dao.TipoObjetoDao;
-import com.websystique.spring.model.TipoObjeto;
+import com.websystique.spring.model.objetos.TipoObjeto;
 
 @Service("tipoObjetoService")
 @Transactional

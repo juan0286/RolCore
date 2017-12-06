@@ -1,6 +1,6 @@
 package com.websystique.spring.dao;
 
-import com.websystique.spring.model.BonoExp;
+import com.websystique.spring.model.bono.BonoExp;
 import java.util.Set;
 
 import org.hibernate.Criteria;

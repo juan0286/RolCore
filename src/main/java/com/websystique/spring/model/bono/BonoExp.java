@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.websystique.spring.model;
+package com.websystique.spring.model.bono;
 
+import com.websystique.spring.model.Personaje;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.CascadeType;

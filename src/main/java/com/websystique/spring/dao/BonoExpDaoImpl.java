@@ -7,7 +7,7 @@ import org.hibernate.Query;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
-import com.websystique.spring.model.BonoExp;
+import com.websystique.spring.model.bono.BonoExp;
 import com.websystique.spring.model.Personaje;
 import java.util.HashSet;
 

@@ -5,11 +5,14 @@
  */
 package com.websystique.spring;
 
+import com.websystique.spring.model.Campaign;
+import com.websystique.spring.model.Info;
 import com.websystique.spring.model.Jugador;
 import com.websystique.spring.model.Master;
-import com.websystique.spring.model.Objeto;
+import com.websystique.spring.model.objetos.Objeto;
 import com.websystique.spring.model.Personaje;
-import com.websystique.spring.model.TipoObjeto;
+import com.websystique.spring.model.objetos.TipoObjeto;
+import com.websystique.spring.model.campaign.Historia;
 import com.websystique.spring.model.caractPj.Caracteristicas;
 import com.websystique.spring.model.caractPj.Hab_armadura;
 import com.websystique.spring.model.caractPj.Hab_armas;
@@ -22,6 +25,9 @@ import com.websystique.spring.model.caractPj.Habilidades;
 import com.websystique.spring.model.caractPj.Idioma;
 import com.websystique.spring.model.caractPj.Idioma_desarrollo;
 import com.websystique.spring.model.caractPj.Resistencias;
+import com.websystique.spring.model.objetos.BolsaDeMonedas;
+import com.websystique.spring.model.objetos.CajaObjetos;
+import com.websystique.spring.model.objetos.ObjetoPortado;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Set;
@@ -217,6 +223,29 @@ public class Creador {
                 habilidades.aprenderHabiSec(i_d);
             }
         }
+        
+        CajaObjetos co = new CajaObjetos();
+        
+        ObjetoPortado op = new ObjetoPortado();
+        Objeto o =HibernateDao.obtenerObjetoPorId(0l);
+        
+        op.setObj(o);
+        op.setEnPoder(false);
+        op.setPesar(true);
+        Info i = new Info();
+        i.setSoloMaster(false);
+        i.setTexto("Este anillo es una prueba");
+        i.setTitulo("pruebaInfo");
+        
+        op.addInfo(i);
+        neo.setCajaObjetos(co);
+        
+        BolsaDeMonedas bdm = new BolsaDeMonedas();
+        bdm.setmOro(120);
+        bdm.setmBronce(10);
+        bdm.setmPlata(500);
+        
+        neo.setBolsaDeMonedas(bdm);
         
         hector.setPj(neo);
         
@@ -431,6 +460,23 @@ public class Creador {
         HibernateDao.crearObjeto(o);
     }
     
+    private static void crearCampaign(){
     
+        Campaign c = new Campaign();
+        
+        Historia h = new Historia();
+        
+        h.setCampaign(c);
+        h.setFabula("Esta es una historia de dos capitanes muy valientes que salgan Gondor.");
+        
+        
+        Jugador hector = HibernateDao.obtenerJugadorPorId(0l);
+        if (hector != null){
+            c.addJugador(hector);
+            
+        }
+        
+        
+    }
     
 }

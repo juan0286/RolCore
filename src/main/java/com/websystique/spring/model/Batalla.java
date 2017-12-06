@@ -6,6 +6,8 @@
 package com.websystique.spring.model;
 
 import java.io.Serializable;
+import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,6 +27,16 @@ public class Batalla implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id_batalla;
 
+    
+    @Column
+    private Date inicio;
+    
+    @Column
+    private Date fin;
+    
+    
+    
+    
     public long getId_batalla() {
         return id_batalla;
     }
@@ -32,4 +44,7 @@ public class Batalla implements Serializable{
     public void setId_batalla(long id_batalla) {
         this.id_batalla = id_batalla;
     }
+    
+    
+    
 }

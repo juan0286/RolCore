@@ -5,9 +5,17 @@
  */
 package com.websystique.spring.model;
 
+import com.websystique.spring.model.campaign.Historia;
 import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -38,6 +46,8 @@ public class Campaign implements Serializable {
     @Column(nullable = false)
     private String nombre;
 
+    
+    
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
     @LazyCollection(LazyCollectionOption.FALSE)
     private Set<Jugador> jugadores;
@@ -47,6 +57,9 @@ public class Campaign implements Serializable {
 
     @OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private Mundo mundo;
+    
+    @OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
+    private Historia historia;
 
     @Column(unique = true)
     @ManyToMany(fetch = FetchType.LAZY,cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.REFRESH})
@@ -59,6 +72,16 @@ public class Campaign implements Serializable {
     public String getNombre() {
         return nombre;
     }
+    
+    public String getNombreURL() {
+        try {
+            return URLEncoder.encode(nombre.replace(" ", "_"), "UTF-8");
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(Campaign.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return nombre;
+    }
+    
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
@@ -69,9 +92,21 @@ public class Campaign implements Serializable {
     }
 
     public void addJugador(Jugador j) {
-        jugadores.add(j);
+        if (jugadores == null)
+            jugadores = new HashSet<Jugador>();
+        jugadores.add(j);       
+            
     }
 
+    public Historia getHistoria() {
+        return historia;
+    }
+
+    public void setHistoria(Historia historia) {
+        this.historia = historia;
+    }
+
+    
     public void setJugadores(Set<Jugador> jugadores) {
         this.jugadores = jugadores;
     }
@@ -98,6 +133,14 @@ public class Campaign implements Serializable {
 
     public void setMaster(Master master) {
         this.master = master;
+    }
+
+    public Set<CampaignAccessRequest> getCars() {
+        return cars;
+    }
+
+    public void setCars(Set<CampaignAccessRequest> cars) {
+        this.cars = cars;
     }
 
     

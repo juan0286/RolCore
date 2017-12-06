@@ -58,7 +58,7 @@ public class Jugador  implements Serializable{
     // private set<Mesanje> mensajes;
 
     @Column(unique = true)
-    @OneToMany( fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.REFRESH})
+    @OneToMany( fetch = FetchType.EAGER, cascade = {CascadeType.REFRESH})
     private Set<CampaignAccessRequest> cARequests;
     
     

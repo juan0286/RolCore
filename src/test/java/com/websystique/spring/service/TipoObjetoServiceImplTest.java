@@ -6,7 +6,7 @@
 package com.websystique.spring.service;
 
 import com.websystique.spring.configuration.AppConfig;
-import com.websystique.spring.model.TipoObjeto;
+import com.websystique.spring.model.objetos.TipoObjeto;
 import java.util.Set;
 import org.junit.After;
 import org.junit.AfterClass;

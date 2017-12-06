@@ -5,6 +5,7 @@
  */
 package com.websystique.spring.model;
 
+import com.websystique.spring.model.objetos.Objeto;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
@@ -34,15 +35,7 @@ public class Mundo implements Serializable{
     
     @Column(nullable = false)
     private String nombre;
-    
-    @OneToMany
-    @LazyCollection(LazyCollectionOption.FALSE)
-    Set<Area> areas;
-    
-    @OneToMany
-    @LazyCollection(LazyCollectionOption.FALSE)
-    private Set<Batalla> batallas;
-    
+        
     @OneToMany
     @LazyCollection(LazyCollectionOption.FALSE)
     private Set<Objeto> objetos;
@@ -55,6 +48,10 @@ public class Mundo implements Serializable{
     @LazyCollection(LazyCollectionOption.FALSE)
     private Set<Pnj> pnjs;
     
+    @OneToMany
+    @LazyCollection(LazyCollectionOption.FALSE)
+    Set<Area> areas;
+     
     @Column(nullable = false)
     private Date fecha_rol;
     
@@ -77,14 +74,7 @@ public class Mundo implements Serializable{
         this.areas = areas;
     }
 
-    public Set<Batalla> getBatallas() {
-        return batallas;
-    }
-
-    public void setBatallas(Set<Batalla> batallas) {
-        this.batallas = batallas;
-    }
-
+   
     public Set<Objeto> getObjetos() {
         return objetos;
     }
@@ -128,7 +118,7 @@ public class Mundo implements Serializable{
     
     @Override
     public String toString() {
-        return "Mundo{" + "id_mundo=" + id_mundo + ", areas=" + areas + ", batallas=" + batallas + ", objetos=" + objetos + ", climatologia=" + climatologia + ", pnjs=" + pnjs + ", fecha_rol=" + fecha_rol + '}';
+        return "Mundo{" + "id_mundo=" + id_mundo + ", areas=" + areas + ", objetos=" + objetos + ", climatologia=" + climatologia + ", pnjs=" + pnjs + ", fecha_rol=" + fecha_rol + '}';
     }
     
     

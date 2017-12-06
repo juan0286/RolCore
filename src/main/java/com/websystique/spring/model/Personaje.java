@@ -5,12 +5,17 @@
  */
 package com.websystique.spring.model;
 
+import com.websystique.spring.model.bono.Bono;
+import com.websystique.spring.model.bono.BonoExp;
 import com.websystique.spring.model.caractPj.Caracteristicas;
 import com.websystique.spring.model.caractPj.Habilidades;
 import com.websystique.spring.model.caractPj.Idioma_desarrollo;
+import com.websystique.spring.model.objetos.BolsaDeMonedas;
+import com.websystique.spring.model.objetos.CajaObjetos;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -32,84 +37,97 @@ import org.hibernate.annotations.LazyCollectionOption;
 @Entity
 @Table(name = "Personaje")
 @XmlRootElement
-public class Personaje implements Serializable{
-    
+public class Personaje implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id_pj;    
+    private long id_pj;
 
     @Column(nullable = false)
     private String nombre;
-    
+
     @OneToOne
     private Jugador jugador;
     //private Profesion profesion;
-    
+
     @Column(nullable = false)
     private int exp;
-    
+
     @Column(nullable = false)
     private int nivel;
-    
+
     @Column(nullable = false)
     private String raza;
-    
+
     @Column(nullable = false)
     private int altura;
-    
+
     @Column(nullable = false)
     private int peso;
-    
+
     @Column(nullable = false)
     private String genero;
-    
+
     @Column(nullable = false)
     private int edad;
-    
+
     @Column
     private String motivacion;
-    
+
     @Column(nullable = false)
     private String alineamiento;
-    
+
     @Column
     private String estado_civico;
-    
+
     @Column
     private String familia;
-    
+
     @Column
     private String diosesAdorados;
-    
+
     @Column
     private String religion;
-    
-    @OneToOne(cascade={CascadeType.PERSIST,CascadeType.REMOVE}) 
+
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     @JoinColumn(name = "ID_HABIL")
     private Habilidades habilidades;
-    
-    @OneToOne(cascade={CascadeType.PERSIST,CascadeType.REMOVE}) 
+
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     @JoinColumn(name = "ID_CARACT")
-    private Caracteristicas caracteristicas;    
-    
-    @OneToMany(cascade=CascadeType.ALL)
+    private Caracteristicas caracteristicas;
+
+    @OneToMany(cascade = CascadeType.ALL)
     @LazyCollection(LazyCollectionOption.FALSE)
     List<BonoExp> bonosExp = new ArrayList<BonoExp>();
 
 //    private mod_caract m_c;
 //    private set<Lista> listas;
 //    private set<sortilegio> sortilegios; 
+    @OneToOne
+    private CajaObjetos cajaObjetos;
+    
+    @OneToOne
+    private CajaObjetos cargaCaballos;
+    
+    @OneToOne
+    private BolsaDeMonedas bolsaDeMonedas;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private Set<Bono> bonos;
 
     public Personaje() {
     }
 
-    public void aplicarBonoExp(BonoExp be){
+    public void aplicarBonoExp(BonoExp be) {
         bonosExp.add(be);
     }
-    
+
     public long getId_pj() {
         return id_pj;
     }
+
     public void setId_pj(long id_pj) {
 
         this.id_pj = id_pj;
@@ -138,7 +156,6 @@ public class Personaje implements Serializable{
 //    public void setProfesion(Profesion profesion) {
 //        this.profesion = profesion;
 //    }
-
     public int getExp() {
         return exp;
     }
@@ -173,6 +190,38 @@ public class Personaje implements Serializable{
 
     public int getPeso() {
         return peso;
+    }
+
+    public CajaObjetos getCajaObjetos() {
+        return cajaObjetos;
+    }
+
+    public void setCajaObjetos(CajaObjetos cajaObjetos) {
+        this.cajaObjetos = cajaObjetos;
+    }
+
+    public CajaObjetos getCargaCaballos() {
+        return cargaCaballos;
+    }
+
+    public void setCargaCaballos(CajaObjetos cargaCaballos) {
+        this.cargaCaballos = cargaCaballos;
+    }
+
+    public BolsaDeMonedas getBolsaDeMonedas() {
+        return bolsaDeMonedas;
+    }
+
+    public void setBolsaDeMonedas(BolsaDeMonedas bolsaDeMonedas) {
+        this.bolsaDeMonedas = bolsaDeMonedas;
+    }
+
+    public Set<Bono> getBonos() {
+        return bonos;
+    }
+
+    public void setBonos(Set<Bono> bonos) {
+        this.bonos = bonos;
     }
 
     public void setPeso(int peso) {
@@ -258,7 +307,6 @@ public class Personaje implements Serializable{
     public void setCaracteristicas(Caracteristicas caracteristicas) {
         this.caracteristicas = caracteristicas;
     }
-  
 
     public List<BonoExp> getBonosExp() {
         return bonosExp;
@@ -267,8 +315,6 @@ public class Personaje implements Serializable{
     public void setBonosExp(List<BonoExp> bonosExp) {
         this.bonosExp = bonosExp;
     }
-    
-    
 
     @Override
     public int hashCode() {
@@ -296,26 +342,22 @@ public class Personaje implements Serializable{
 
     @Override
     public String toString() {
-        return "Personaje{" + "id_pj=" + id_pj + "\n" + "nombre=" + nombre + "\n" +
-                "exp=" + exp + "\n" + 
-                "nivel=" + nivel + "\n" + 
-                "raza=" + raza + "\n" + 
-                "altura=" + altura + "\n" + 
-                "peso=" + peso + "\n" + 
-                "genero=" + genero + "\n" + 
-                "edad=" + edad + "\n" + 
-                "motivacion=" + motivacion + "\n" + 
-                "alineamiento=" + alineamiento + "\n" + 
-                "estado_civico=" + estado_civico + "\n" + 
-                "familia=" + familia + "\n" + 
-                "diosesAdorados=" + diosesAdorados + "\n" + 
-                "religion=" + religion + "\n" + 
-                "caracteristicas=" + caracteristicas + "\n" + 
-                "habilidades=" + habilidades ;
+        return "Personaje{" + "id_pj=" + id_pj + "\n" + "nombre=" + nombre + "\n"
+                + "exp=" + exp + "\n"
+                + "nivel=" + nivel + "\n"
+                + "raza=" + raza + "\n"
+                + "altura=" + altura + "\n"
+                + "peso=" + peso + "\n"
+                + "genero=" + genero + "\n"
+                + "edad=" + edad + "\n"
+                + "motivacion=" + motivacion + "\n"
+                + "alineamiento=" + alineamiento + "\n"
+                + "estado_civico=" + estado_civico + "\n"
+                + "familia=" + familia + "\n"
+                + "diosesAdorados=" + diosesAdorados + "\n"
+                + "religion=" + religion + "\n"
+                + "caracteristicas=" + caracteristicas + "\n"
+                + "habilidades=" + habilidades;
     }
-
-    
-    
-
 
 }

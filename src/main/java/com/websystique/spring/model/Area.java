@@ -6,11 +6,15 @@
 package com.websystique.spring.model;
 
 import java.io.Serializable;
+import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -39,6 +43,11 @@ public class Area implements Serializable{
 
     @Column(nullable = false)
     private int tipoDeArea;
+    
+    @OneToMany(cascade={CascadeType.PERSIST,CascadeType.REMOVE}) 
+    @JoinColumn(name = "ID_INFO")
+    private Set<Info> informacion;
+    
     /*
     Si es un area de tipo continente debe tener si o si Climatologia, 
     Si es pais, puede heredar de continente o tener otra.
@@ -54,6 +63,22 @@ public class Area implements Serializable{
     }
 
     public Area() {
+    }
+
+    public int getTipoDeArea() {
+        return tipoDeArea;
+    }
+
+    public void setTipoDeArea(int tipoDeArea) {
+        this.tipoDeArea = tipoDeArea;
+    }
+
+    public Set<Info> getInformacion() {
+        return informacion;
+    }
+
+    public void setInformacion(Set<Info> informacion) {
+        this.informacion = informacion;
     }
     
     

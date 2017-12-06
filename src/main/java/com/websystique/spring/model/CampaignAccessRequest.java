@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class CampaignAccessRequest  implements Serializable{
     
-    public enum estado { ESPERA, ACEPTADA, RECHAZADA};
+    public enum estado { ESPERA, ACEPTADA, RECHAZADA, NUEVA};
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,14 +38,14 @@ public class CampaignAccessRequest  implements Serializable{
     @Column
     private Date fecha;
     
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Campaign campaign;
     
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Jugador jugador;
     
     @Column
-    private int status;
+    private estado status;
 
     public CampaignAccessRequest() {
     }
@@ -82,11 +82,11 @@ public class CampaignAccessRequest  implements Serializable{
         this.jugador = jugador;
     }
 
-    public int getStatus() {
+    public estado getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(estado status) {
         this.status = status;
     }
 
@@ -107,12 +107,13 @@ public class CampaignAccessRequest  implements Serializable{
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final CampaignAccessRequest other = (CampaignAccessRequest) obj;
+        final CampaignAccessRequest other = (CampaignAccessRequest) obj;        
+                
+        if (!this.campaign.equals(other.campaign) || this.jugador.equals(other.jugador)) {
+            return false;
+        }
         
         if (this.id_car != other.id_car) {
-            return false;
-        }        
-        if (!this.campaign.equals(other.campaign) || this.jugador.equals(other.jugador)) {
             return false;
         }
         

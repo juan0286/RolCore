@@ -47,6 +47,14 @@ public class CampaignAccessRequestServiceImpl implements CampaignAccessRequestSe
         dao.updateCampaignAccessRequest(campaign);
     }   
 
+    public void deleteCarComplete(long id_car, long id_j, long id_campaign) {
+        dao.deleteCarComplete(id_car, id_j, id_campaign);
+    }
+
+    public void updateStatusCARTo(long id_car, CampaignAccessRequest.estado e) {
+        dao.updateStatusCARTo(id_car, e);
+    }
+
     
 
     

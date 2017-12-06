@@ -2,7 +2,7 @@ package com.websystique.spring.dao;
 
 import java.util.Set;
 
-import com.websystique.spring.model.TipoObjeto;
+import com.websystique.spring.model.objetos.TipoObjeto;
 
 public interface TipoObjetoDao {
 

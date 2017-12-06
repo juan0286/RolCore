@@ -3,14 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.websystique.spring.model;
+package com.websystique.spring.model.objetos;
 
+import com.websystique.spring.model.Info;
 import java.io.Serializable;
+import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -36,11 +41,15 @@ public class TipoObjeto implements Serializable {
     private float peso_stnd; // gramos
     
     @Column(name = "DEGRADADO", nullable = false)
-    private float degradado;  // pts de vida que pierde por asalto
+    private float degradado;  // pts de vida que pierde por dia
     
     @Column(name = "DURABILIDAD_STND", nullable = false)
     private float durabilidad_stnd;  // ptos de vida del objeto > 100 integro. < a 100 el porcentaje de integridad
 
+    @OneToMany(cascade={CascadeType.PERSIST,CascadeType.REMOVE}) 
+    @JoinColumn(name = "ID_INFO")
+    private Set<Info> informacion;
+    
     public TipoObjeto() {
     }
     
@@ -90,6 +99,14 @@ public class TipoObjeto implements Serializable {
 
     public void setDurabilidad_stnd(float durabilidad_stnd) {
         this.durabilidad_stnd = durabilidad_stnd;
+    }
+
+    public Set<Info> getInformacion() {
+        return informacion;
+    }
+
+    public void setInformacion(Set<Info> informacion) {
+        this.informacion = informacion;
     }
     
     
