@@ -17,6 +17,7 @@ import org.hibernate.exception.ConstraintViolationException;
 public class JugadorDaoImpl extends AbstractDao implements JugadorDao {
 
     private static final Logger LOGGER = Logger.getLogger(JugadorDaoImpl.class.getName());
+
     public void saveJugador(Jugador jugador) {
         try {
             persist(jugador);

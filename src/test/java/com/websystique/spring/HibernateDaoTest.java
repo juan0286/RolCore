@@ -103,7 +103,7 @@ public class HibernateDaoTest {
         
         Campaign cReturn = null;
         
-        if (m.getCampaigns().contains(c)){
+        if (m != null && m.getCampaigns().contains(c)){
             long idABorrar = 0L;            
             for (Campaign ca : m.getCampaigns()) {
                 if (ca.equals(c)){
@@ -467,11 +467,18 @@ public class HibernateDaoTest {
         
         assertTrue(expResult);
         
-        HibernateDao.borrarBonoExp(be);
-        //boolean result = HibernateDao.crearBonoExp(be);
-        //assertEquals(expResult, result);
+        HibernateDao.borrarBonoExp(be);       
         
+    }
+    
+    @Test
+    public void testtodosLosPjsDeUnaCampaign() {
+        System.out.println("todosLosPjsDeUnaCampaign");
+        Set<Personaje> pjs = HibernateDao.todosLosPjsDeUnaCampaign(1L);
         
+         assertNotNull(pjs);                
+        
+               
     }
 
 }

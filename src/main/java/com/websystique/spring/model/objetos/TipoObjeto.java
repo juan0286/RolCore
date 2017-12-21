@@ -7,6 +7,7 @@ package com.websystique.spring.model.objetos;
 
 import com.websystique.spring.model.Info;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -27,37 +28,36 @@ import javax.persistence.Table;
 public class TipoObjeto implements Serializable {    
     
     @Id
-    @Column(name = "ID_TIPOOBJETO")
+    @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_tipoObjeto;
+    private long id_tipoObjeto;
 
-    @Column(name = "NOMBRE", nullable = false)
+    @Column(nullable = false)
     private String nombre;
     
-    @Column(name = "TAM_STND", nullable = false)
+    @Column(nullable = false)
     private float tam_stnd; // cm
     
-    @Column(name = "PESO_STND", nullable = false)
+    @Column(nullable = false)
     private float peso_stnd; // gramos
     
-    @Column(name = "DEGRADADO", nullable = false)
+    @Column( nullable = false)
     private float degradado;  // pts de vida que pierde por dia
     
-    @Column(name = "DURABILIDAD_STND", nullable = false)
+    @Column(nullable = false)
     private float durabilidad_stnd;  // ptos de vida del objeto > 100 integro. < a 100 el porcentaje de integridad
 
     @OneToMany(cascade={CascadeType.PERSIST,CascadeType.REMOVE}) 
-    @JoinColumn(name = "ID_INFO")
     private Set<Info> informacion;
     
     public TipoObjeto() {
     }
     
-    public int getId_tipoObjeto() {
+    public long getId_tipoObjeto() {
         return id_tipoObjeto;
     }
 
-    public void setId_tipoObjeto(int id_tipoObjeto) {
+    public void setId_tipoObjeto(long id_tipoObjeto) {
         this.id_tipoObjeto = id_tipoObjeto;
     }
 
@@ -109,7 +109,23 @@ public class TipoObjeto implements Serializable {
         this.informacion = informacion;
     }
     
+    public void addInfo(Info i){
+        if (informacion == null)
+            informacion =  new HashSet<Info>();
+        informacion.add(i);
+    }
     
+    public void addInfo(boolean soloMaster,String texto, String titulo){
+        if (informacion == null)
+            informacion =  new HashSet<Info>();
+        
+        Info i = new Info();
+        i.setSoloMaster(true);
+        i.setTexto(texto);
+        i.setTitulo(titulo);
+        
+        informacion.add(i);
+    }
     
 
     @Override

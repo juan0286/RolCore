@@ -11,28 +11,32 @@ import com.websystique.spring.model.objetos.TipoObjeto;
 
 @Service("tipoObjetoService")
 @Transactional
-public class TipoObjetoServiceImpl implements TipoObjetoService{
+public class TipoObjetoServiceImpl implements TipoObjetoService {
 
-	@Autowired
-	private TipoObjetoDao dao;
-	
-	public void saveTipoObjeto(TipoObjeto objeto) {
-		dao.saveTipoObjeto(objeto);
-	}
+    @Autowired
+    private TipoObjetoDao dao;
 
-	public Set<TipoObjeto> findAllTipoObjetos() {
-		return dao.findAllTipoObjetos();
-	}
+    public void saveTipoObjeto(TipoObjeto objeto) {
+        dao.saveTipoObjeto(objeto);
+    }
 
-	public void deleteTipoObjetoByNombre(String nombre) {
-		dao.deleteTipoObjetoByNombre(nombre);
-	}
+    public Set<TipoObjeto> findAllTipoObjetos() {
+        return dao.findAllTipoObjetos();
+    }
 
-	public TipoObjeto findByNombre(String nombre) {
-		return dao.findByNombre(nombre);
-	}
+    public void deleteTipoObjetoByNombre(String nombre) {
+        dao.deleteTipoObjetoByNombre(nombre);
+    }
 
-	public void updateTipoObjeto(TipoObjeto objeto){
-		dao.updateTipoObjeto(objeto);
-	}
+    public TipoObjeto findByNombre(String nombre) {
+        return dao.findByNombre(nombre);
+    }
+
+    public void updateTipoObjeto(TipoObjeto objeto) {
+        dao.updateTipoObjeto(objeto);
+    }
+
+    public TipoObjeto findById(long id) {
+        return dao.findByid(id);
+    }
 }

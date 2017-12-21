@@ -5,6 +5,7 @@ import java.util.Set;
 
 import com.websystique.spring.model.Campaign;
 import com.websystique.spring.model.Master;
+import com.websystique.spring.model.Personaje;
 
 public interface CampaignService {
 

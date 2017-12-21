@@ -29,8 +29,7 @@ public class OpcionPremioPregunta {
     
     @Column(nullable = false)  
     private boolean correcta;
-
-    
+   
     
     
     

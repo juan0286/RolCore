@@ -23,6 +23,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -101,16 +102,26 @@ public class Personaje implements Serializable {
     @LazyCollection(LazyCollectionOption.FALSE)
     List<BonoExp> bonosExp = new ArrayList<BonoExp>();
 
+    @ManyToOne
+    Campaign campaign;
+
+    public Campaign getCampaign() {
+        return campaign;
+    }
+
 //    private mod_caract m_c;
+    public void setCampaign(Campaign campaign) {
+        this.campaign = campaign;
+    }
 //    private set<Lista> listas;
 //    private set<sortilegio> sortilegios; 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private CajaObjetos cajaObjetos;
-    
-    @OneToOne
+
+    @OneToOne(cascade = CascadeType.ALL)
     private CajaObjetos cargaCaballos;
-    
-    @OneToOne
+
+    @OneToOne(cascade = CascadeType.ALL)
     private BolsaDeMonedas bolsaDeMonedas;
 
     @OneToMany(cascade = CascadeType.ALL)
@@ -342,6 +353,10 @@ public class Personaje implements Serializable {
 
     @Override
     public String toString() {
+        return nombre;
+    }
+
+    public String toFullString() {
         return "Personaje{" + "id_pj=" + id_pj + "\n" + "nombre=" + nombre + "\n"
                 + "exp=" + exp + "\n"
                 + "nivel=" + nivel + "\n"

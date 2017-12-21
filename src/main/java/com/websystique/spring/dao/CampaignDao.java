@@ -5,8 +5,9 @@ import java.util.Set;
 import com.websystique.spring.model.Campaign;
 import com.websystique.spring.model.Jugador;
 import com.websystique.spring.model.Master;
+import com.websystique.spring.model.Personaje;
 
-public interface CampaignDao {
+public interface CampaignDao {   
 
         public static enum TypeSearch{MASTER_NAME,CAMPAIGN_NOMBRE};        
         

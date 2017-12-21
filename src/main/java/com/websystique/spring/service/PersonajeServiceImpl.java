@@ -11,28 +11,32 @@ import com.websystique.spring.model.Personaje;
 
 @Service("personajeService")
 @Transactional
-public class PersonajeServiceImpl implements PersonajeService{
+public class PersonajeServiceImpl implements PersonajeService {
 
-	@Autowired
-	private PersonajeDao dao;
-	
-	public void savePersonaje(Personaje personaje) {
-		dao.savePersonaje(personaje);
-	}
+    @Autowired
+    private PersonajeDao dao;
 
-	public Set<Personaje> findAllPersonajes() {
-		return dao.findAllPersonajes();
-	}
+    public void savePersonaje(Personaje personaje) {
+        dao.savePersonaje(personaje);
+    }
 
-	public void deletePersonajeById(long id) {
-		dao.deletePersonajeById(id);
-	}
+    public Set<Personaje> findAllPersonajes() {
+        return dao.findAllPersonajes();
+    }
 
-	public Personaje findById(long id) {
-		return dao.findById(id);
-	}
+    public void deletePersonajeById(long id) {
+        dao.deletePersonajeById(id);
+    }
 
-	public void updatePersonaje(Personaje personaje){
-		dao.updatePersonaje(personaje);
-	}
+    public Personaje findById(long id) {
+        return dao.findById(id);
+    }
+
+    public void updatePersonaje(Personaje personaje) {
+        dao.updatePersonaje(personaje);
+    }
+
+    public Set<Personaje> findAllPersonajesFromCampaign(long id) {
+        return dao.findAllPersonajesFromCampaign(id);
+    }
 }

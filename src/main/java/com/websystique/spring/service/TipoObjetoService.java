@@ -13,6 +13,8 @@ public interface TipoObjetoService {
 	void deleteTipoObjetoByNombre(String nombre);
 
 	TipoObjeto findByNombre(String nombre);
+        
+	TipoObjeto findById(long id);
 
 	void updateTipoObjeto(TipoObjeto objeto);
 }

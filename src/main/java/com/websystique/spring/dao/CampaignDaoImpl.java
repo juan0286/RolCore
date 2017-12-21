@@ -12,6 +12,7 @@ import com.websystique.spring.model.Campaign;
 import com.websystique.spring.model.CampaignAccessRequest;
 import com.websystique.spring.model.Jugador;
 import com.websystique.spring.model.Master;
+import com.websystique.spring.model.Personaje;
 import java.util.HashSet;
 import java.util.Iterator;
 import org.hibernate.FetchMode;
@@ -106,5 +107,7 @@ public class CampaignDaoImpl extends AbstractDao implements CampaignDao {
         }
         return setCampsResp;
     }
+
+    
 
 }

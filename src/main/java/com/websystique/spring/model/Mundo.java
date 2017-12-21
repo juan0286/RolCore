@@ -8,6 +8,7 @@ package com.websystique.spring.model;
 import com.websystique.spring.model.objetos.Objeto;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -48,7 +49,7 @@ public class Mundo implements Serializable{
     @LazyCollection(LazyCollectionOption.FALSE)
     private Set<Pnj> pnjs;
     
-    @OneToMany
+    @OneToMany(cascade = CascadeType.PERSIST)
     @LazyCollection(LazyCollectionOption.FALSE)
     Set<Area> areas;
      
@@ -115,6 +116,29 @@ public class Mundo implements Serializable{
         this.nombre = nombre;
     }
    
+    public void addObjeto(Objeto o){
+        if (objetos == null)
+            objetos =  new HashSet<Objeto>();
+        objetos.add(o);
+    }
+   
+    public void addPnj(Pnj pnj){
+        if (pnjs == null)
+            pnjs =  new HashSet<Pnj>();
+        pnjs.add(pnj);
+    }
+    
+    public void addArea(Area a){
+        if (areas == null)
+            areas =  new HashSet<Area>();
+        areas.add(a);
+    }
+    
+    public void addCambioClimatico(CambioClimatico cc){
+        if (climatologia == null)
+            climatologia =  new HashSet<CambioClimatico>();
+        climatologia.add(cc);
+    }
     
     @Override
     public String toString() {

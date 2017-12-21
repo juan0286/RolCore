@@ -13,6 +13,8 @@ public interface TipoObjetoDao {
 	void deleteTipoObjetoByNombre(String nombre);
 	
 	TipoObjeto findByNombre(String nombre);
+        
+	TipoObjeto findByid(long id);
 	
 	void updateTipoObjeto(TipoObjeto objeto);
 }

@@ -9,11 +9,13 @@ import java.io.Serializable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -37,8 +39,7 @@ public class Objeto implements Serializable {
     @Column(name = "DEGRADADO_ACTUAL", nullable = false)
     private int degradado_actual;  // ptos de vida actuales
     
-    @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "ID_TIPOOBJETO")
+    @OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})    
     private TipoObjeto tipoObjeto;
     // private set<efecto> efectos
 

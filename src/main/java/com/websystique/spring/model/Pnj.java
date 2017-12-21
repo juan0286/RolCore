@@ -8,6 +8,7 @@ package com.websystique.spring.model;
 import com.websystique.spring.model.caractPj.Caracteristicas;
 import com.websystique.spring.model.caractPj.Habilidades;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -40,8 +41,7 @@ public class Pnj implements Serializable{
     @Column(nullable = false)
     private int nivel;
 
-    @OneToMany(cascade={CascadeType.PERSIST,CascadeType.REMOVE}) 
-    @JoinColumn(name = "ID_INFO")
+    @OneToMany(cascade={CascadeType.PERSIST,CascadeType.REMOVE})     
     private Set<Info> informacion;    
     
     @Column(nullable = false)
@@ -142,5 +142,21 @@ public class Pnj implements Serializable{
         this.caracteristicas = caracteristicas;
     }
     
+    public void addInfo(Info i){
+        if (informacion == null)
+            informacion =  new HashSet<Info>();
+        informacion.add(i);
+    }
     
+    public void addInfo(boolean soloMaster,String texto, String titulo){
+        if (informacion == null)
+            informacion =  new HashSet<Info>();
+        
+        Info i = new Info();
+        i.setSoloMaster(true);
+        i.setTexto(texto);
+        i.setTitulo(titulo);
+        
+        informacion.add(i);
+    }
 }

@@ -15,4 +15,6 @@ public interface PersonajeDao {
 	Personaje findById(long id);
 	
 	void updatePersonaje(Personaje personaje);
+
+        Set<Personaje> findAllPersonajesFromCampaign(long id);
 }

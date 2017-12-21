@@ -9,10 +9,12 @@ import java.util.Date;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -61,6 +63,12 @@ public class PremioPregunta {
     @Column(nullable = false)
     private boolean waitForAll;
 
+    @OneToMany(fetch = FetchType.LAZY)
+    private Set<Premio> premio;
+    
+    @OneToMany(fetch = FetchType.LAZY)
+    private Set<OpcionPremioPregunta> opciones;
+    
     public int getTimeResponse() {
         return timeResponse;
     }
@@ -84,6 +92,8 @@ public class PremioPregunta {
     public void setWaitForAll(boolean waitForAll) {
         this.waitForAll = waitForAll;
     }
+
+    
 
     @OneToMany
     Set<OpcionPremioPregunta> choices;
@@ -140,6 +150,24 @@ public class PremioPregunta {
         this.choices = choices;
     }
 
+    public Set<Premio> getPremio() {
+        return premio;
+    }
+
+    public void setPremio(Set<Premio> premio) {
+        this.premio = premio;
+    }
+
+    public Set<OpcionPremioPregunta> getOpciones() {
+        return opciones;
+    }
+
+    public void setOpciones(Set<OpcionPremioPregunta> opciones) {
+        this.opciones = opciones;
+    }
+    
+    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -158,4 +186,10 @@ public class PremioPregunta {
         return true;
     }
 
+    @Override
+    public String toString() {
+        return "PremioPregunta{" + "id_pp=" + id_pp + ", fecha=" + fecha + ", titulo=" + titulo + ", consigna=" + consigna + ", disparada=" + disparada + ", timeResponse=" + timeResponse + ", cantGanadores=" + cantGanadores + ", waitForAll=" + waitForAll + ", premio=" + premio + ", opciones=" + opciones + ", choices=" + choices + '}';
+    }
+
+    
 }
