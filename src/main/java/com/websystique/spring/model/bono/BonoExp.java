@@ -31,7 +31,7 @@ public class BonoExp implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id_bonoexp;
    
-    @ManyToOne(cascade = CascadeType.REFRESH)
+    @ManyToOne
     private Personaje pj;    
     
     @Column(nullable = false)

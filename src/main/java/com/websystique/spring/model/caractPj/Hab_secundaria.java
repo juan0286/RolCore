@@ -50,7 +50,7 @@ public class Hab_secundaria implements Serializable{
     @Column(nullable = false)
     private int tipo;
     
-    @Column(nullable = false)
+    @Column(nullable = false,length = 555)
     private String descripcion;
     
     @Column(nullable = false)

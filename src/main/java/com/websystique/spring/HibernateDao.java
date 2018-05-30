@@ -5,8 +5,8 @@
  */
 package com.websystique.spring;
 
+import com.websystique.spring.model.combate.Critico;
 import com.websystique.spring.configuration.AppConfig;
-import com.websystique.spring.dao.CampaignAccessRequestDao;
 import com.websystique.spring.dao.CampaignDao;
 import com.websystique.spring.model.bono.BonoExp;
 import com.websystique.spring.model.Campaign;
@@ -15,13 +15,21 @@ import com.websystique.spring.model.Jugador;
 import com.websystique.spring.model.Master;
 import com.websystique.spring.model.objetos.Objeto;
 import com.websystique.spring.model.Personaje;
+import com.websystique.spring.model.Profesion;
+import com.websystique.spring.model.Tempo;
 import com.websystique.spring.model.objetos.TipoObjeto;
 import com.websystique.spring.model.caractPj.Hab_secundaria;
 import com.websystique.spring.model.caractPj.Idioma;
+import com.websystique.spring.model.combate.CodeCritico;
 import com.websystique.spring.model.messaging.PremioPregunta;
+import com.websystique.spring.model.pj.Efecto;
+import com.websystique.spring.model.pj.Herida;
 import com.websystique.spring.service.BonoExpService;
 import com.websystique.spring.service.CampaignAccessRequestService;
 import com.websystique.spring.service.CampaignService;
+import com.websystique.spring.service.ControlesService;
+import com.websystique.spring.service.CriticoService;
+import com.websystique.spring.service.EfectoService;
 import com.websystique.spring.service.IdiomaService;
 import com.websystique.spring.service.JugadorService;
 import com.websystique.spring.service.ObjetoService;
@@ -31,13 +39,17 @@ import java.util.Set;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
 import com.websystique.spring.service.Hab_secundariaService;
+import com.websystique.spring.service.HeridaService;
+import com.websystique.spring.service.IService;
 import com.websystique.spring.service.MasterService;
 import com.websystique.spring.service.PremioPreguntaService;
+import com.websystique.spring.service.ProfesionService;
+import com.websystique.spring.service.Servicio;
+import com.websystique.spring.service.TempoService;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.hibernate.Hibernate;
-import org.hibernate.exception.ConstraintViolationException;
-import org.springframework.transaction.annotation.Transactional;
+import org.hibernate.Query;
 
 /**
  *
@@ -52,6 +64,20 @@ public class HibernateDao {
         PersonajeService service = (PersonajeService) context.getBean("personajeService");
         service.savePersonaje(pj);
         context.close();
+    }
+
+    public static int controlActividadDePj(Personaje pj) {
+        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        ControlesService service = (ControlesService) context.getBean("controlesService");
+        int r = 0;
+        try {
+            r = service.actividadActualPj(pj);
+        } catch (Exception ex) {
+            LOGGER.log(Level.SEVERE, " Error obteniendo Actividad de " + pj.getNombre());
+            LOGGER.log(Level.SEVERE, ex.toString(), ex);
+        }
+        context.close();
+        return r;
     }
 
     public static Jugador obtenerJugadorePorNombre(String name) {
@@ -125,6 +151,20 @@ public class HibernateDao {
         Master m = service.findById(id);
         context.close();
         return m;
+    }
+
+    public static BonoExp obtenerBonoExp(long id) {
+        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        BonoExpService service = (BonoExpService) context.getBean("bonoExpService");
+        BonoExp be = null;
+        try {
+            be = service.findById(id);
+        } catch (Exception ex) {
+            LOGGER.log(Level.SEVERE, " Error obteniendo BonoExp");
+            LOGGER.log(Level.SEVERE, ex.toString(), ex);
+        }
+        context.close();
+        return be;
     }
 
     public static void crearMaster(Master py) {
@@ -334,7 +374,7 @@ public class HibernateDao {
     public static Campaign obtenerCampaignPorNombre(String nombre) {
         AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         CampaignService service = (CampaignService) context.getBean("campaignService");
-        
+
         Campaign c = service.findByName(nombre);
 //    Hibernate.initialize(c.getJugadores());
 //    Hibernate.initialize(c.getBonosExp());
@@ -356,6 +396,51 @@ public class HibernateDao {
         context.close();
     }
 
+    public static boolean actualizarPersonaje(Personaje p) {
+        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        PersonajeService service = (PersonajeService) context.getBean("personajeService");
+
+        boolean succ = true;
+        try {
+            service.updatePersonaje(p);
+        } catch (Exception ex) {
+            LOGGER.log(Level.SEVERE, "Fallo actualizando Pj " + p);
+            LOGGER.log(Level.SEVERE, ex.toString(), ex);
+            succ = false;
+        }
+        return succ;
+    }
+
+    public static boolean actualizarBonoExp(BonoExp p) {
+        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        BonoExpService service = (BonoExpService) context.getBean("bonoExpService");
+
+        boolean succ = true;
+        try {
+            service.updateBonoExp(p);
+        } catch (Exception ex) {
+            LOGGER.log(Level.SEVERE, "Fallo actualizando Pj " + p);
+            LOGGER.log(Level.SEVERE, ex.toString(), ex);
+            succ = false;
+        }
+        return succ;
+    }
+
+    public static boolean actualizarHerida(Herida h) {
+        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        HeridaService service = (HeridaService) context.getBean("heridaService");
+
+        boolean succ = true;
+        try {
+            service.updateHerida(h);
+        } catch (Exception ex) {
+            LOGGER.log(Level.SEVERE, "Fallo actualizando herida " + h);
+            LOGGER.log(Level.SEVERE, ex.toString(), ex);
+            succ = false;
+        }
+        return succ;
+    }
+
     public static void borrarCampaignAccessRequest(long id_car, long id_pj, long id_campaign) {
         AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         CampaignAccessRequestService service = (CampaignAccessRequestService) context.getBean("campaignAccessRequestService");
@@ -373,17 +458,17 @@ public class HibernateDao {
     public static Set<Personaje> todosLosPjsDeUnaCampaign(long id) {
         AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         PersonajeService service = (PersonajeService) context.getBean("personajeService");
-       
+
         Set<Personaje> pjs = null;
         try {
-             pjs = service.findAllPersonajesFromCampaign(id);
+            pjs = service.findAllPersonajesFromCampaign(id);
         } catch (Exception ex) {
             LOGGER.log(Level.SEVERE, " Error obteniendo todas los Personajes de la camppaña con id " + id);
             LOGGER.log(Level.SEVERE, ex.toString(), ex);
         }
         context.close();
         return pjs;
-        
+
     }
 
     public static boolean borrarCampaignPorId(long id) {
@@ -557,15 +642,16 @@ public class HibernateDao {
         service_mas.deleteMasterById(id);
     }
 
-    public static boolean crearBonoExp(BonoExp be) {
+    public static long crearBonoExp(BonoExp be) {
         AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         BonoExpService service = (BonoExpService) context.getBean("bonoExpService");
-        boolean succ = true;
+        long succ = -1L;
         try {
             service.saveBonoExp(be);
+            succ = be.getId_bonoexp();
         } catch (Exception ex) {
             LOGGER.log(Level.SEVERE, "Fallo creando bonoExp " + be);
-            return false;
+            LOGGER.log(Level.SEVERE, ex.toString(), ex);
         }
         LOGGER.log(Level.FINE, "Se ah creado bonoExp " + be.getId_bonoexp());
         return succ;
@@ -628,6 +714,343 @@ public class HibernateDao {
             service.deletePremioPreguntaById(id);
         } catch (Exception ex) {
             LOGGER.log(Level.SEVERE, "Fallo borrando car con id " + id);
+            succ = false;
+        }
+        return succ;
+    }
+
+    public static Profesion obtenerProfesionPorId(long id) {
+
+        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        ProfesionService service = (ProfesionService) context.getBean("profesionService");
+        Profesion o = service.findById(id);
+        context.close();
+        return o;
+    }
+
+    public static Profesion obtenerProfesionPorNombre(String nombre) {
+
+        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        ProfesionService service = (ProfesionService) context.getBean("profesionService");
+        Profesion o = service.findByName(nombre);
+        context.close();
+        return o;
+    }
+
+    public static void crearProfesion(Profesion profesion) {
+        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        ProfesionService service = (ProfesionService) context.getBean("profesionService");
+        try {
+            service.saveProfesion(profesion);
+        } catch (Exception ex) {
+            LOGGER.log(Level.SEVERE, " Error Guardando Habilidad Secundaria " + profesion);
+            LOGGER.log(Level.SEVERE, ex.toString(), ex);
+        }
+        context.close();
+    }
+
+    public static Set<Profesion> todasLosProfesiones() {
+        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        ProfesionService service = (ProfesionService) context.getBean("profesionService");
+        Set<Profesion> profesions = null;
+        try {
+            profesions = service.findAllProfesions();
+        } catch (Exception ex) {
+            LOGGER.log(Level.SEVERE, " Error obteniendo todos los Profesions ");
+            LOGGER.log(Level.SEVERE, ex.toString(), ex);
+        }
+        context.close();
+        return profesions;
+    }
+
+    static boolean borrarProfesionPorId(long id) {
+        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        ProfesionService service = (ProfesionService) context.getBean("profesionService");
+        boolean succ = true;
+        try {
+            service.deleteProfesionById(id);
+        } catch (Exception ex) {
+            LOGGER.log(Level.SEVERE, "Fallo borrando car con id " + id);
+            succ = false;
+        }
+        return succ;
+    }
+
+    public static Herida obtenerHeridaPorId(long id) {
+
+        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        HeridaService service = (HeridaService) context.getBean("heridaService");
+        Herida o = service.findById(id);
+        context.close();
+        return o;
+    }
+
+    public static void crearHerida(Herida herida) {
+        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        HeridaService service = (HeridaService) context.getBean("heridaService");
+        try {
+            service.saveHerida(herida);
+        } catch (Exception ex) {
+            LOGGER.log(Level.SEVERE, " Error Guardando Herida " + herida);
+            LOGGER.log(Level.SEVERE, ex.toString(), ex);
+        }
+        context.close();
+    }
+
+    public static Set<Herida> todosLosHeridas() {
+        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        HeridaService service = (HeridaService) context.getBean("heridaService");
+        Set<Herida> heridas = null;
+        try {
+            heridas = service.findAllHeridas();
+        } catch (Exception ex) {
+            LOGGER.log(Level.SEVERE, " Error obteniendo todos los Heridas ");
+            LOGGER.log(Level.SEVERE, ex.toString(), ex);
+        }
+        context.close();
+        return heridas;
+    }
+
+    static boolean borrarHeridaPorId(long id) {
+        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        HeridaService service = (HeridaService) context.getBean("heridaService");
+        boolean succ = true;
+        try {
+            service.deleteHeridaById(id);
+        } catch (Exception ex) {
+            LOGGER.log(Level.SEVERE, "Fallo borrando car con id " + id);
+            succ = false;
+        }
+        return succ;
+    }
+
+    public static Efecto obtenerEfectoPorId(long id) {
+
+        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        EfectoService service = (EfectoService) context.getBean("efectoService");
+        Efecto o = null;
+        try {
+            o = service.findById(id);
+        } catch (Exception ex) {
+            LOGGER.log(Level.SEVERE, " Error obteniendo todos los Profesions ");
+            LOGGER.log(Level.SEVERE, ex.toString(), ex);
+        }
+        context.close();
+        return o;
+    }
+
+    public static void crearEfecto(Efecto efecto) {
+        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        EfectoService service = (EfectoService) context.getBean("efectoService");
+        try {
+            service.saveEfecto(efecto);
+        } catch (Exception ex) {
+            LOGGER.log(Level.SEVERE, " Error Guardando Habilidad Secundaria " + efecto);
+            LOGGER.log(Level.SEVERE, ex.toString(), ex);
+        }
+        context.close();
+    }
+
+    public static Set<Efecto> todosLosEfectos() {
+        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        EfectoService service = (EfectoService) context.getBean("efectoService");
+        Set<Efecto> efectos = null;
+        try {
+            efectos = service.findAllEfectos();
+        } catch (Exception ex) {
+            LOGGER.log(Level.SEVERE, " Error obteniendo todos los Efectos ");
+            LOGGER.log(Level.SEVERE, ex.toString(), ex);
+        }
+        context.close();
+        return efectos;
+    }
+
+    static boolean borrarEfectoPorId(long id) {
+        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        EfectoService service = (EfectoService) context.getBean("efectoService");
+        boolean succ = true;
+        try {
+            service.deleteEfectoById(id);
+        } catch (Exception ex) {
+            LOGGER.log(Level.SEVERE, "Fallo borrando car con id " + id);
+            succ = false;
+        }
+        return succ;
+    }
+
+    public static Critico obtenerCriticoPorId(CodeCritico id) {
+
+        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        CriticoService service = (CriticoService) context.getBean("criticoService");
+        Critico o = null;
+        try {
+            o = service.findById(id);
+        } catch (Exception ex) {
+            LOGGER.log(Level.SEVERE, " Error Obteniendo Critico " + o);
+            LOGGER.log(Level.SEVERE, ex.toString(), ex);
+        }
+        context.close();
+        return o;
+    }
+
+    public static void crearCritico(Critico critico) {
+        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        CriticoService service = (CriticoService) context.getBean("criticoService");
+        try {
+            service.saveCritico(critico);
+        } catch (Exception ex) {
+            LOGGER.log(Level.SEVERE, " Error Guardando Critico " + critico);
+            LOGGER.log(Level.SEVERE, ex.toString(), ex);
+        }
+        context.close();
+    }
+
+    public static Set<Critico> todosLosCriticos() {
+        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        CriticoService service = (CriticoService) context.getBean("criticoService");
+        Set<Critico> criticos = null;
+        try {
+            criticos = service.findAllCriticos();
+        } catch (Exception ex) {
+            LOGGER.log(Level.SEVERE, " Error obteniendo todos los Criticos ");
+            LOGGER.log(Level.SEVERE, ex.toString(), ex);
+        }
+        context.close();
+        return criticos;
+    }
+
+    static boolean borrarCriticoPorId(CodeCritico id) {
+        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        CriticoService service = (CriticoService) context.getBean("criticoService");
+        boolean succ = true;
+        try {
+            service.deleteCriticoById(id);
+        } catch (Exception ex) {
+            LOGGER.log(Level.SEVERE, "Fallo borrando Critico con id " + id);
+            LOGGER.log(Level.SEVERE, ex.toString(), ex);
+            succ = false;
+        }
+        return succ;
+    }
+
+    static public int actividadDePj(Personaje pj) {
+        return 3;
+    }
+
+    public static boolean borrarHerida(Herida h) {
+        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        HeridaService service = (HeridaService) context.getBean("heridaService");
+        boolean succ = true;
+        try {
+            service.deleteHeridaById(h.getId_herida());
+        } catch (Exception ex) {
+            LOGGER.log(Level.SEVERE, "Fallo borrando Herida " + h);
+            LOGGER.log(Level.SEVERE, ex.toString(), ex);
+            succ = false;
+        }
+        return succ;
+
+    }
+
+    public static Tempo obtenerTempoPorId(long id) {
+
+        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        TempoService service = (TempoService) context.getBean("tempoService");
+        Tempo o = service.findById(id);
+        context.close();
+        return o;
+    }
+
+    public static void crearTempo(Tempo tempo) {
+        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        TempoService service = (TempoService) context.getBean("tempoService");
+        try {
+            service.saveTempo(tempo);
+        } catch (Exception ex) {
+            LOGGER.log(Level.SEVERE, " Error Guardando Habilidad Secundaria " + tempo);
+            LOGGER.log(Level.SEVERE, ex.toString(), ex);
+        }
+        context.close();
+    }
+
+    public static Set<Tempo> todosLosTempos() {
+        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        TempoService service = (TempoService) context.getBean("tempoService");
+        Set<Tempo> tempos = null;
+        try {
+            tempos = service.findAllTempos();
+        } catch (Exception ex) {
+            LOGGER.log(Level.SEVERE, " Error obteniendo todos los Tempos ");
+            LOGGER.log(Level.SEVERE, ex.toString(), ex);
+        }
+        context.close();
+        return tempos;
+    }
+
+    static boolean borrarTempoPorId(long id) {
+        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        TempoService service = (TempoService) context.getBean("tempoService");
+        boolean succ = true;
+        try {
+            service.deleteTempoById(id);
+        } catch (Exception ex) {
+            LOGGER.log(Level.SEVERE, "Fallo borrando car con id " + id);
+            succ = false;
+        }
+        return succ;
+    }
+
+    public static boolean actualizarTempo(Tempo p) {
+        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        TempoService service = (TempoService) context.getBean("TempoService");        
+        boolean succ = true;
+        try {
+            service.updateTempo(p);
+        } catch (Exception ex) {
+            LOGGER.log(Level.SEVERE, "Fallo actualizando tempo " + p);
+            LOGGER.log(Level.SEVERE, ex.toString(), ex);
+            succ = false;
+        }
+        return succ;
+    }
+    
+    public static boolean actualizarTodoslosTempoDeUnaCampaign(long asaltos, long id_campaign) {
+        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        TempoService service = (TempoService) context.getBean("tempoService");       
+        boolean succ = true;
+        try {
+            service.updateTemposCampaign(asaltos, id_campaign);
+        } catch (Exception ex) {
+            LOGGER.log(Level.SEVERE, "Fallo actualizando todos los tempo de campaign " + id_campaign);
+            LOGGER.log(Level.SEVERE, ex.toString(), ex);
+            succ = false;
+        }
+        return succ;
+    }
+    
+    public static boolean actualizar(String clase, Object objActualizar) {
+        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        IService service = (IService) context.getBean(clase);
+        boolean succ = true;
+        try {
+            service.save(objActualizar);
+        } catch (Exception ex) {
+            LOGGER.log(Level.SEVERE, "Fallo actualizando " + objActualizar);
+            LOGGER.log(Level.SEVERE, ex.toString(), ex);
+            succ = false;
+        }
+        return succ;
+    }
+    
+    public static boolean save(String clase, Object objAGuardar) {
+        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        IService service = (IService) context.getBean(clase);
+        boolean succ = true;
+        try {
+            service.save(objAGuardar);
+        } catch (Exception ex) {
+            LOGGER.log(Level.SEVERE, "Fallo actualizando todos los tempo de campaign " + objAGuardar);
+            LOGGER.log(Level.SEVERE, ex.toString(), ex);
             succ = false;
         }
         return succ;

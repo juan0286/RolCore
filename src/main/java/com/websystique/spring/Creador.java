@@ -5,6 +5,7 @@
  */
 package com.websystique.spring;
 
+import com.websystique.spring.model.combate.Critico;
 import com.websystique.spring.model.Area;
 import com.websystique.spring.model.Campaign;
 import com.websystique.spring.model.Info;
@@ -13,6 +14,7 @@ import com.websystique.spring.model.Master;
 import com.websystique.spring.model.Mundo;
 import com.websystique.spring.model.objetos.Objeto;
 import com.websystique.spring.model.Personaje;
+import com.websystique.spring.model.Profesion;
 import com.websystique.spring.model.objetos.TipoObjeto;
 import com.websystique.spring.model.campaign.Historia;
 import com.websystique.spring.model.caractPj.Caracteristicas;
@@ -26,10 +28,15 @@ import com.websystique.spring.model.caractPj.Hab_subterfugio;
 import com.websystique.spring.model.caractPj.Habilidades;
 import com.websystique.spring.model.caractPj.Idioma;
 import com.websystique.spring.model.caractPj.Idioma_desarrollo;
+import com.websystique.spring.model.caractPj.ProfesionDesarrollo;
 import com.websystique.spring.model.caractPj.Resistencias;
+import com.websystique.spring.model.combate.CodeCritico;
 import com.websystique.spring.model.objetos.BolsaDeMonedas;
 import com.websystique.spring.model.objetos.CajaObjetos;
 import com.websystique.spring.model.objetos.ObjetoPortado;
+import com.websystique.spring.model.pj.ModFisico;
+import com.websystique.spring.model.pj.Modifier;
+import com.websystique.spring.model.pj.StatusFisico;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -56,6 +63,10 @@ public class Creador {
 
         // creacion de Sortilegios
         //creacion de personajes
+        crearProfesiones();
+
+        //carga de criticos
+        cargaCriticos();
         crearNeo();
         crearAdminMaster();
         crearCampaign();
@@ -171,7 +182,6 @@ public class Creador {
         habilidades.setPuntosPoder(42);
         habilidades.setPercepcion(114);
 
-        neo.setExp(245765);
         neo.setJugador(hector);
         neo.setNivel(14);
         neo.setNombre("Neo");
@@ -252,6 +262,28 @@ public class Creador {
 
         hector.setPj(neo);
 
+        // profesion
+        Profesion p = HibernateDao.obtenerProfesionPorNombre("Montaraz");
+        ProfesionDesarrollo pd1 = new ProfesionDesarrollo();
+        pd1.setProfesion(p);
+        pd1.setNivel(14);
+        pd1.setExperiencia(54564654);
+
+        Profesion p2 = HibernateDao.obtenerProfesionPorNombre("Exterminador");
+        ProfesionDesarrollo pd2 = new ProfesionDesarrollo();
+        pd2.setProfesion(p2);
+        pd2.setNivel(8);
+        pd2.setExperiencia(4564654);
+
+        neo.addprofesion(pd1);
+        neo.addprofesion(pd2);
+
+        // STATUS FISICO
+        neo.setHorasDeSueño(8);
+        StatusFisico sf = new StatusFisico(neo);
+        neo.setStatusFisico(sf);
+        
+        // GUARDADO
         HibernateDao.crearJugador(hector);
 
     }
@@ -484,7 +516,8 @@ public class Creador {
             hector.getPj().setCampaign(c);
         }
         c.setMaster(tj);
-
+        HibernateDao.actualizarJugador(hector);
+        
         Mundo wo = new Mundo();
         wo.setFecha_rol(new Date());
         wo.setNombre("Tierra media");
@@ -504,6 +537,92 @@ public class Creador {
         c.setHistoria(h);
 
         HibernateDao.crearCampaign(c);
+    }
+
+    private static void crearProfesiones() {
+        Profesion p_monta = new Profesion();
+        Profesion p_exterminador = new Profesion();
+        Profesion p_paladin = new Profesion();
+        p_monta.setNombre("Montaraz");
+        p_paladin.setNombre("Paladin");
+        p_exterminador.setNombre("exterminador");
+
+    }
+
+    private static void cargaCriticos() {
+        Critico c = new Critico();
+        CodeCritico cc= Constantes.criticoPrueba1;
+        c.setId(cc);
+        c.setAsaltosYMuere(-1);
+        c.setDescripcion(" Golpe en la cabeza, -5pv, aturido 2 asaltos");
+        
+        Modifier mod = new Modifier();
+        mod.setFactor(5);
+        mod.setOperador(Modifier.Operador.RESTA);
+        mod.setPropiedad(Modifier.Propiedad.ACTIVIDAD);
+        c.addcMod(mod);
+        
+        //c.setModsFisicos();
+        ModFisico mf = new ModFisico();
+        mf.setHitFisico(ModFisico.HitFisico.CIEGO);
+        mf.setHitMental(ModFisico.HitMental.NINGUNO);
+        c.addcModFisico(mf);
+        
+        c.setPerdidaPv(0);
+        c.setPv(5);
+        c.setAsaltos_aturdido(2);
+        c.setRestoActividad(50);
+
+        
+        
+        Critico c2 = new Critico();
+        
+        CodeCritico cc2= Constantes.criticoPrueba2;
+        c2.setId(cc2);
+        c2.setAsaltosYMuere(-1);
+        c2.setDescripcion(" Golpe por ahi nomàs, corte profundo -3pv por asalto, aturdido y sin poder parar 2 asaltos, +10 a tu sig golpe");
+        c2.setPerdidaPv(-1);
+        c2.setPv(5);
+        c2.setPerdidaPv(3);
+        c2.setAsaltos_aturdido_sin_poder_parar(2);
+        c2.setBonoGolpeSiguiente(10);
+        c2.setRestoActividad(20);
+        
+        Critico c3 = new Critico();
+        CodeCritico cc3 = Constantes.criticoPrueba19;
+        c3.setId_critico(cc3);
+        c3.setDescripcion("GOlpe dirigido contra el cuello, que secciona la arteria carotida y la vena yugular. El cuello del adversario se ha roto, y muere despues de una agonia que dura 1 asalto");
+        c3.setAsaltosYMuere(1);
+        
+        
+        Critico c4 = new Critico();
+        CodeCritico cc4 = Constantes.criticoPrueba18;
+        c4.setId_critico(cc4);
+        c4.setDescripcion("Cortas la nariz del adversario. Herida leve. +2 puntos de daño y una cicatriz permanente. El adversario pirde 2 puntos de vida por asalto y lucha con un -30. Esta aturdido durante 6 asaltos");
+        c4.setAsaltos_aturdido(6);
+        c4.setRestoActividad(30);
+        c4.setPv(2);
+        c4.setPerdidaPv(2);
+        ModFisico mf4 = new ModFisico();
+        mf4.setHitFisico(ModFisico.HitFisico.PIERDE_NARIZ);
+        c4.addcModFisico(mf4);
+        
+        Critico c5 = new Critico();
+        CodeCritico cc5 = Constantes.criticoPrueba17;
+        c5.setId_critico(cc5);
+        c5.setDescripcion("Amputas la oreja al adversario + 3 pv pierde 3 puntos de vida por asalto con -50, aturdido 3 asaltos, sin poder parar por 1");
+        c5.setPv(3);
+        c5.setPerdidaPv(3);
+        c5.setRestoActividad(50);
+        ModFisico mf5 = new ModFisico();
+        mf5.setHitFisico(ModFisico.HitFisico.PIERDE_OREJA_DERECHA);
+        c5.addcModFisico(mf5);
+        
+        HibernateDao.crearCritico(c);
+        HibernateDao.crearCritico(c2);
+        HibernateDao.crearCritico(c3);
+        HibernateDao.crearCritico(c4);
+        HibernateDao.crearCritico(c5);
     }
 
 }

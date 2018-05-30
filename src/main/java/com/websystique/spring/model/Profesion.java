@@ -33,6 +33,7 @@ public class Profesion {
     private String nombre;
 
     
+    
     public Profesion() {
     }
 

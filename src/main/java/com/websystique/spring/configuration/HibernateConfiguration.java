@@ -18,8 +18,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScan({ "com.websystique.spring.configuration" })
-@PropertySource(value = { "classpath:application.properties" })
+@ComponentScan({"com.websystique.spring.configuration"})
+@PropertySource(value = {"classpath:application.properties"})
 public class HibernateConfiguration {
 
     @Autowired
@@ -29,11 +29,11 @@ public class HibernateConfiguration {
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
-        sessionFactory.setPackagesToScan(new String[] { "com.websystique.spring.model" });
+        sessionFactory.setPackagesToScan(new String[]{"com.websystique.spring.model"});
         sessionFactory.setHibernateProperties(hibernateProperties());
         return sessionFactory;
-     }
-	
+    }
+
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
@@ -41,11 +41,10 @@ public class HibernateConfiguration {
         dataSource.setUrl(environment.getRequiredProperty("jdbc.url"));
         dataSource.setUsername(environment.getRequiredProperty("jdbc.username"));
         dataSource.setPassword(environment.getRequiredProperty("jdbc.password"));
-        
-        
+
         return dataSource;
     }
-    
+
     private Properties hibernateProperties() {
         Properties properties = new Properties();
         properties.put("hibernate.dialect", environment.getRequiredProperty("hibernate.dialect"));
@@ -53,17 +52,17 @@ public class HibernateConfiguration {
         properties.put("hibernate.format_sql", environment.getRequiredProperty("hibernate.format_sql"));
         properties.put("hibernate.hbm2ddl.auto", environment.getRequiredProperty("hibernate.hbm2ddl.auto"));
         properties.put("hibernate.enable_lazy_load_no_tran", environment.getRequiredProperty("hibernate.enable_lazy_load_no_tran"));
-        
-        return properties;        
+        properties.put("hibernate.flushMode", environment.getRequiredProperty("hibernate.flushMode"));
+
+        return properties;
     }
+
     
-	@Bean
+    @Bean
     @Autowired
     public HibernateTransactionManager transactionManager(SessionFactory s) {
-       HibernateTransactionManager txManager = new HibernateTransactionManager();
-       txManager.setSessionFactory(s);
-       return txManager;
+        HibernateTransactionManager txManager = new HibernateTransactionManager();
+        txManager.setSessionFactory(s);
+        return txManager;
     }
 }
-
-

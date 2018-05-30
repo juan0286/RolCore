@@ -6,6 +6,7 @@
 package com.websystique.spring.model.campaign;
 
 import com.websystique.spring.model.Campaign;
+import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -27,7 +28,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "Historia")
 @XmlRootElement
-public class Historia {
+public class Historia implements Serializable{
     
      @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -10,10 +10,15 @@ import com.websystique.spring.model.bono.BonoExp;
 import com.websystique.spring.model.caractPj.Caracteristicas;
 import com.websystique.spring.model.caractPj.Habilidades;
 import com.websystique.spring.model.caractPj.Idioma_desarrollo;
+import com.websystique.spring.model.caractPj.ProfesionDesarrollo;
 import com.websystique.spring.model.objetos.BolsaDeMonedas;
 import com.websystique.spring.model.objetos.CajaObjetos;
+import com.websystique.spring.model.objetos.Objeto;
+import com.websystique.spring.model.pj.Herida;
+import com.websystique.spring.model.pj.StatusFisico;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import javax.persistence.CascadeType;
@@ -42,6 +47,7 @@ public class Personaje implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false)
     private long id_pj;
 
     @Column(nullable = false)
@@ -49,16 +55,21 @@ public class Personaje implements Serializable {
 
     @OneToOne
     private Jugador jugador;
-    //private Profesion profesion;
 
-    @Column(nullable = false)
-    private int exp;
+    @OneToMany(cascade = {CascadeType.PERSIST,CascadeType.REMOVE,CascadeType.REFRESH})
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private Set<ProfesionDesarrollo> profesiones;
+
 
     @Column(nullable = false)
     private int nivel;
 
     @Column(nullable = false)
     private String raza;
+
+
+    @Column(nullable = false)
+    private int horasDeSueño;
 
     @Column(nullable = false)
     private int altura;
@@ -90,44 +101,57 @@ public class Personaje implements Serializable {
     @Column
     private String religion;
 
-    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @OneToOne(cascade = {CascadeType.PERSIST,CascadeType.REMOVE,CascadeType.REFRESH})
     @JoinColumn(name = "ID_HABIL")
     private Habilidades habilidades;
 
-    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @OneToOne(cascade = {CascadeType.PERSIST,CascadeType.REMOVE,CascadeType.REFRESH})
     @JoinColumn(name = "ID_CARACT")
     private Caracteristicas caracteristicas;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = {CascadeType.PERSIST,CascadeType.REMOVE,CascadeType.REFRESH})
     @LazyCollection(LazyCollectionOption.FALSE)
     List<BonoExp> bonosExp = new ArrayList<BonoExp>();
 
     @ManyToOne
     Campaign campaign;
 
+    @OneToOne(cascade = {CascadeType.PERSIST,CascadeType.REMOVE,CascadeType.REFRESH})
+    private CajaObjetos cajaObjetos;
+
+    @OneToOne(cascade = {CascadeType.PERSIST,CascadeType.REMOVE,CascadeType.REFRESH})
+    private CajaObjetos cargaCaballos;
+
+    @OneToOne(cascade = {CascadeType.PERSIST,CascadeType.REMOVE,CascadeType.REFRESH})
+    private BolsaDeMonedas bolsaDeMonedas;
+
+    @OneToMany(cascade = {CascadeType.PERSIST,CascadeType.REMOVE,CascadeType.REFRESH})
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private Set<Bono> bonos;
+    
+    @OneToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "ID_SF")
+    private StatusFisico statusFisico;
+    
+    
     public Campaign getCampaign() {
         return campaign;
     }
 
+    public int getHorasDeSueño() {
+        return horasDeSueño;
+    }
+
+    public void setHorasDeSueño(int horasDeSueño) {
+        this.horasDeSueño = horasDeSueño;
+    }
 //    private mod_caract m_c;
+
     public void setCampaign(Campaign campaign) {
         this.campaign = campaign;
     }
-//    private set<Lista> listas;
-//    private set<sortilegio> sortilegios; 
-    @OneToOne(cascade = CascadeType.ALL)
-    private CajaObjetos cajaObjetos;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private CajaObjetos cargaCaballos;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    private BolsaDeMonedas bolsaDeMonedas;
-
-    @OneToMany(cascade = CascadeType.ALL)
-    @LazyCollection(LazyCollectionOption.FALSE)
-    private Set<Bono> bonos;
-
+    
     public Personaje() {
     }
 
@@ -160,21 +184,20 @@ public class Personaje implements Serializable {
         this.jugador = jugador;
     }
 
-//    public Profesion getProfesion() {
-//        return profesion;
-//    }
-//
-//    public void setProfesion(Profesion profesion) {
-//        this.profesion = profesion;
-//    }
-    public int getExp() {
-        return exp;
+    public Set<ProfesionDesarrollo> getProfesiones() {
+        return profesiones;
     }
 
-    public void setExp(int exp) {
-        this.exp = exp;
+    public void setProfesiones(Set<ProfesionDesarrollo> profesiones) {
+        this.profesiones = profesiones;
     }
-
+    
+    public void addprofesion(ProfesionDesarrollo p){
+        if (profesiones == null)
+            profesiones =  new HashSet<ProfesionDesarrollo>();
+        profesiones.add(p);
+    }
+    
     public int getNivel() {
         return nivel;
     }
@@ -327,6 +350,16 @@ public class Personaje implements Serializable {
         this.bonosExp = bonosExp;
     }
 
+    public StatusFisico getStatusFisico() {
+        return statusFisico;
+    }
+
+    public void setStatusFisico(StatusFisico statusFisico) {
+        this.statusFisico = statusFisico;
+    }
+
+        
+    
     @Override
     public int hashCode() {
         int hash = 5;
@@ -358,7 +391,7 @@ public class Personaje implements Serializable {
 
     public String toFullString() {
         return "Personaje{" + "id_pj=" + id_pj + "\n" + "nombre=" + nombre + "\n"
-                + "exp=" + exp + "\n"
+                
                 + "nivel=" + nivel + "\n"
                 + "raza=" + raza + "\n"
                 + "altura=" + altura + "\n"
@@ -375,4 +408,17 @@ public class Personaje implements Serializable {
                 + "habilidades=" + habilidades;
     }
 
+    
+    
+    
+    public void perderPv(int pv) {
+        int nuevos_pv = statusFisico.getPv_perdidos() + pv;
+        statusFisico.setPv_perdidos(nuevos_pv);
+    }
+    
+    public void herir(Herida h) {
+        statusFisico.addHerida(h);
+    }
+
+    
 }

@@ -46,7 +46,11 @@ public class BonoExpDaoImpl extends AbstractDao implements BonoExpDao {
     }
 
     public void updateBonoExp(BonoExp bonoExp) {
+       // getSession().flush();
+        //BonoExp be = findById(bonoExp.getId_bonoexp());
+        //be = bonoExp;
         getSession().update(bonoExp);
+        
     }
 
 }
